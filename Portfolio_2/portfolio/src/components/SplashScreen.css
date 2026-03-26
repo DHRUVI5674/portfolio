@@ -1,0 +1,176 @@
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.splash-content {
+  text-align: center;
+  z-index: 1010;
+}
+
+.presenting-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 4rem;
+  opacity: 0;
+  animation: fade-in-up 1s forwards 0.5s;
+}
+
+.developer-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 1.5rem;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: fade-in-up 1s forwards 1s;
+}
+
+.dp-logo {
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  color: #000;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  animation: scale-in 1s forwards;
+}
+
+/* 3D Box Loading Animation */
+.loader-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  perspective: 2000px;
+  transform: rotateX(-30deg) rotateY(-45deg);
+  margin-bottom: 3rem;
+}
+
+.holder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+  transform: translate3d(0em, 3em, 1.5em);
+}
+
+.holder:last-child {
+  transform: rotateY(-90deg) rotateX(90deg) translate3d(0, 3em, 1.5em);
+}
+
+.holder:first-child {
+  transform: rotateZ(-90deg) rotateX(-90deg) translate3d(0, 3em, 1.5em);
+}
+
+.holder:nth-child(1) .box { background-color: #1FBCD3; }
+.holder:nth-child(1) .box:before { background-color: #12717f; }
+.holder:nth-child(1) .box:after { background-color: #1898ab; }
+
+.holder:nth-child(2) .box { background-color: #CBE2B4; }
+.holder:nth-child(2) .box:before { background-color: #8db562; }
+.holder:nth-child(2) .box:after { background-color: #add186; }
+
+.holder:nth-child(3) .box { background-color: #F6B6CA; }
+.holder:nth-child(3) .box:before { background-color: #eb5e8a; }
+.holder:nth-child(3) .box:after { background-color: #f18db0; }
+
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+  animation: ani-box 6s infinite;
+  width: 3em;
+  height: 3em;
+}
+
+.box:before, .box:after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+}
+
+.box:before {
+  left: 100%;
+  bottom: 0;
+  transform: rotateY(90deg);
+  transform-origin: 0 50%;
+}
+
+.box:after {
+  left: 0;
+  bottom: 100%;
+  transform: rotateX(90deg);
+  transform-origin: 0 100%;
+}
+
+@keyframes ani-box {
+  8.33% { transform: translate3d(-50%,-50%,0) scaleZ(2); }
+  16.7% { transform: translate3d(-50%,-50%,-3em) scaleZ(1); }
+  25% { transform: translate3d(-50%,-100%,-3em) scaleY(2); }
+  33.3% { transform: translate3d(-50%,-150%,-3em) scaleY(1); }
+  41.7% { transform: translate3d(-100%,-150%,-3em) scaleX(2); }
+  50% { transform: translate3d(-150%,-150%,-3em) scaleX(1); }
+  58.3% { transform: translate3d(-150%,-150%,0) scaleZ(2); }
+  66.7% { transform: translate3d(-150%,-150%,0) scaleZ(1); }
+  75% { transform: translate3d(-150%,-100%,0) scaleY(2); }
+  83.3% { transform: translate3d(-150%,-50%,0) scaleY(1); }
+  91.7% { transform: translate3d(-100%,-50%,0) scaleX(2); }
+  100% { transform: translate3d(-50%,-50%,0) scaleX(1); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Splash to App Transition (Non-Neon) */
+.color-spread {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #111; 
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 1001;
+  pointer-events: none;
+}
+
+.color-spread.expand {
+  animation: expand-spread 1.5s ease-out forwards;
+}
+
+@keyframes expand-spread {
+  to { transform: translate(-50%, -50%) scale(300); opacity: 0; }
+}

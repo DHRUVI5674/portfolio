@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+  background: black;
+  color: white;
+}
+
+.font-creative {
+  font-family: 'Pacifico', cursive;
+}
