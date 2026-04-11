@@ -3,6 +3,7 @@ import SectionTitle from '../components/SectionTitle';
 import Button from '../components/Button';
 import { FileDown, Terminal, Cpu, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 
 const About = () => {
     const highlights = [
@@ -14,6 +15,10 @@ const About = () => {
 
     return (
         <section id="about" className="py-32 relative overflow-hidden">
+            <Helmet>
+                <title>About Me | Dhruvi Patel</title>
+                <meta name="description" content="Learn more about Dhruvi Patel, a Full-Stack Developer with experience in building responsive, modern web applications." />
+            </Helmet>
             {/* Background Glows */}
             <div className="absolute top-1/4 -left-20 w-96 h-96 bg-neon-cyan/10 rounded-full blur-[120px] animate-pulse" />
             <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] animate-pulse" />

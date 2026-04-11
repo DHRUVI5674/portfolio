@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../components/Button';
 import { Github, Linkedin, Twitter, Youtube, Code } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import profileImg from '../assets/downloader.png';
 
 const Hero = () => {
@@ -34,6 +35,19 @@ const Hero = () => {
 
     return (
         <section id="hero" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+            <Helmet>
+                <title>Dhruvi Patel | Full-Stack Developer Portfolio</title>
+                <meta name="description" content="Portfolio of Dhruvi Patel - A passionate Full-Stack Developer building futuristic web experiences." />
+                <meta name="keywords" content="Dhruvi Patel, Full-Stack Developer, MERN Stack, UI/UX Designer, Portfolio" />
+                
+                {/* Social Media Meta Tags */}
+                <meta property="og:title" content="Dhruvi Patel | Full-Stack Developer" />
+                <meta property="og:description" content="Check out my portfolio for modern web architectures and immersive user experiences." />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Dhruvi Patel | Portfolio" />
+                <meta name="twitter:description" content="Building the future of web development." />
+            </Helmet>
             <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
                 {/* Left Content */}
