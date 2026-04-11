@@ -22,19 +22,7 @@ const Navbar = () => {
     { name: 'Contact', id: 'contact' },
   ];
 
-  const handleScrollToSection = (e, sectionId) => {
-    if (window.location.pathname === '/' || window.location.hash) {
-      e.preventDefault();
-      window.history.pushState(null, '', '/');
-    }
-    setIsOpen(false);
-    setTimeout(() => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 50);
-  };
+  // Scrolling is now handled by ScrollHandler in App.jsx whenever the URL changes.
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md py-4' : 'bg-transparent py-6'}`}>
@@ -53,8 +41,8 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              to="/"
-              onClick={(e) => handleScrollToSection(e, link.id)}
+              to={`/${link.id}`}
+              onClick={() => setIsOpen(false)}
               className="text-gray-300 hover:text-neon-cyan transition-colors duration-300 font-medium tracking-wide cursor-pointer"
             >
               {link.name}
@@ -92,8 +80,8 @@ const Navbar = () => {
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
-                  to="/"
-                  onClick={(e) => handleScrollToSection(e, link.id)}
+                  to={`/${link.id}`}
+                  onClick={() => setIsOpen(false)}
                   className="text-xl text-gray-300 hover:text-neon-cyan transition-colors cursor-pointer"
                 >
                   {link.name}
