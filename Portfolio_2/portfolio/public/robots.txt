@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /attendance
+
+Sitemap: https://portfolio-red-eta-1hudq6yoxy.vercel.app/
