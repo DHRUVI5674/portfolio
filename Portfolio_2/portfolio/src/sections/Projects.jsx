@@ -9,7 +9,7 @@ const projects = [
         title: "Squarespace Clone",
         description: "Modern website builder platform clone with dynamic layout engine.",
         tech: ["HTML", "CSS", "JAVASCRIPT"],
-        videoId: "7WET9TN4DPI",
+        videoId: "sE_UZ-hmt9U",
         demoUrl: "https://website-clone-squarespace.netlify.app",
         projectUrl: "https://github.com/DHRUVI5674/Website-clone-squarespace"
     },
@@ -17,7 +17,7 @@ const projects = [
         title: "ISRO Website Redesign",
         description: "Interactive portal for Indian Space Research Organisation.",
         tech: ["HTML", "CSS", "JAVASCRIPT"],
-        videoId: "wgKym2cge3Q",
+        videoId: "LAybIoYhSS8",
         demoUrl: "https://website-clone-isro.netlify.app",
         projectUrl: "https://github.com/DHRUVI5674/Website-clone-Isro"
     },
@@ -25,7 +25,7 @@ const projects = [
         title: "Kava DeFi Dashboard",
         description: "Decentralized finance platform with real-time analytics.",
         tech: ["HTML", "CSS", "JAVASCRIPT"],
-        videoId: "2dgt13nmN2s",
+        videoId: "XWBuN_PB16w",
         demoUrl: "https://website-clone-kava.netlify.app",
         projectUrl: "https://github.com/DHRUVI5674/Website-clone-kava"
     },
@@ -33,7 +33,7 @@ const projects = [
         title: "Nestroots E-Commerce",
         description: "Elegant home decor shopping experience with smooth transitions.",
         tech: ["HTML", "CSS", "JAVASCRIPT"],
-        videoId: "6vpYHaagiYc",
+        videoId: "ZlfJZ5uJIvg",
         demoUrl: "https://website-clone-nestroots.netlify.app",
         projectUrl: "https://github.com/DHRUVI5674/Website-clone-nestroots"
     },
@@ -41,7 +41,7 @@ const projects = [
         title: "Ruggable Clone",
         description: "Premium rug styling e-commerce experience.",
         tech: ["HTML", "CSS", "JAVASCRIPT"],
-        videoId: "igbnSy7C2bM",
+        videoId: "u1d5Kimx1j8",
         demoUrl: "https://website-clone-ruggable.netlify.app",
         projectUrl: "https://github.com/DHRUVI5674/Website-clone-ruggable"
     },
@@ -49,7 +49,7 @@ const projects = [
         title: "Ninjacart Clone",
         description: "B2B agriculture platform clone with product lists.",
         tech: ["HTML", "CSS", "JAVASCRIPT"],
-        videoId: "YOhMol-WcR0",
+        videoId: "I3sKBs5BuIw",
         demoUrl: "https://website-clone-ninjacart.netlify.app",
         projectUrl: "https://github.com/DHRUVI5674/Website-clone-ninjacart"
     }
