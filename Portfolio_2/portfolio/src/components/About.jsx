@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function About() {
   return (
@@ -73,9 +74,9 @@ function About() {
                 provide exceptional user experiences. Let's build something amazing together!
               </p>
               <div className="cta-buttons">
-                <a href="#contact" className="contact-btn">
+                <Link to="/contact" className="contact-btn">
                   <span>📧</span> Contact Me
-                </a>
+                </Link>
                 <a href="#" className="download-btn">
                   <span>📄</span> Download Resume
                 </a>
