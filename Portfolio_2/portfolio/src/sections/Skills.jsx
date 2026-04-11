@@ -35,7 +35,7 @@ const Skills = () => {
                             initial={{ height: 0 }}
                             whileInView={{ height: 64 }}
                             transition={{ delay: 0.2 }}
-                            className="absolute top-full left-1/2 -translate-x-1/2 w-1 bg-gradient-to-b from-neon-cyan to-purple-500 z-10"
+                            className="hidden md:block absolute top-full left-1/2 -translate-x-1/2 w-1 bg-gradient-to-b from-neon-cyan to-purple-500 z-10"
                         />
                     </div>
 
@@ -46,14 +46,14 @@ const Skills = () => {
                             initial={{ scaleX: 0 }}
                             whileInView={{ scaleX: 1 }}
                             transition={{ delay: 0.4 }}
-                            className="absolute top-0 left-[16%] right-[16%] h-1 bg-purple-500 rounded-full origin-center"
+                            className="hidden md:block absolute top-0 left-[16%] right-[16%] h-1 bg-purple-500 rounded-full origin-center"
                         />
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-16">
                             {/* Branch 1: Frontend */}
                             <div className="flex flex-col items-center relative">
                                 {/* Vertical Connector from Bar */}
-                                <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-1 h-16 bg-gradient-to-b from-purple-500 to-slate-800" />
+                                <div className="hidden md:block absolute -top-16 left-1/2 -translate-x-1/2 w-1 h-16 bg-gradient-to-b from-purple-500 to-slate-800" />
 
                                 <Node title="Frontend" icon={<Code />} color="border-purple-500 text-purple-400" />
 
@@ -77,7 +77,7 @@ const Skills = () => {
                             {/* Branch 2: Backend */}
                             <div className="flex flex-col items-center relative">
                                 {/* Vertical Connector from Bar */}
-                                <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-1 h-16 bg-gradient-to-b from-purple-500 to-slate-800" />
+                                <div className="hidden md:block absolute -top-16 left-1/2 -translate-x-1/2 w-1 h-16 bg-gradient-to-b from-purple-500 to-slate-800" />
 
                                 <Node title="Backend" icon={<Server />} color="border-neon-cyan text-neon-cyan" />
 
@@ -99,7 +99,7 @@ const Skills = () => {
                             {/* Branch 3: Tools */}
                             <div className="flex flex-col items-center relative">
                                 {/* Vertical Connector from Bar */}
-                                <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-1 h-16 bg-gradient-to-b from-purple-500 to-slate-800" />
+                                <div className="hidden md:block absolute -top-16 left-1/2 -translate-x-1/2 w-1 h-16 bg-gradient-to-b from-purple-500 to-slate-800" />
 
                                 <Node title="Tools" icon={<Wrench />} color="border-pink-500 text-pink-400" />
 

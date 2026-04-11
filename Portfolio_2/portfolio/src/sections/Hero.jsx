@@ -51,15 +51,15 @@ const Hero = () => {
                             <motion.span
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="text-5xl md:text-7xl font-black text-blue-400 tracking-tighter leading-[0.9] drop-shadow-[0_0_25px_rgba(96,165,250,0.6)]"
+                                className="text-xl md:text-2xl font-mono text-neon-cyan mb-2"
                             >
-                                Designing the <br /> Future with
+                                Hi, I am
                             </motion.span>
                             <motion.span
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ type: "spring", bounce: 0.5, delay: 0.2 }}
-                                className="text-3xl md:text-5xl font-bold text-white/90 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] mt-4"
+                                className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-none drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
                             >
                                 Dhruvi Patel
                             </motion.span>

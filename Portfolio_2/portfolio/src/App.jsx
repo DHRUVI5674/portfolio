@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Footer from './components/Footer';
 import Background from './components/Background';
 import Hero from './sections/Hero';
@@ -19,7 +20,7 @@ function App() {
   }
 
   return (
-    <>
+    <Router>
       <Background />
       <div className="relative z-10 font-sans text-gray-200 selection:bg-neon-cyan selection:text-black">
         <Navbar />
@@ -27,16 +28,16 @@ function App() {
         <main>
           <Hero />
           <About />
+          <Skills />
           <Projects />
           <Certificates />
           <Education />
-          <Skills />
           <Contact />
         </main>
 
         <Footer />
       </div>
-    </>
+    </Router>
   );
 }
 
