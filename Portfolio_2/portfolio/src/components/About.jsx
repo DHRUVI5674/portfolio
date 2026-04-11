@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 import {Helmet} from 'react-helmet';
 
 function About() {
-  <Helmet>
-    <title>About Me - Dhruvi Patel</title>
-    <meta name="description" content="Learn more about Dhruvi Patel, a passionate full-stack developer with a knack for problem-solving and continuous learning." />
-  </Helmet>
   return (
+    <>
+    <Helmet>
+        <title>About Me - Dhruvi Patel</title>
+        <meta 
+          name="description" 
+          content="Learn more about Dhruvi Patel, a passionate full-stack developer with a knack for problem-solving and continuous learning." 
+        />
+      </Helmet>
     <section id="about" className="section">
       <div className="container">
         <div className="section-title">
@@ -91,6 +95,7 @@ function About() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 
