@@ -55,40 +55,41 @@ const Hero = () => {
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
+                    className="order-2 md:order-1"
                 >
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ staggerChildren: 0.1 }}
                     >
-                        <h1 className="flex flex-col gap-2 mb-8 items-start">
+                        <h1 className="flex flex-col gap-2 mb-6 items-start">
                             <motion.span
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="text-xl md:text-2xl font-mono text-neon-cyan mb-2"
+                                className="text-2xl md:text-3xl font-mono text-blue-400 mb-2"
                             >
-                                Hi, I am
+                                Hello, I'm
                             </motion.span>
                             <motion.span
-                                initial={{ opacity: 0, scale: 0.9 }}
+                                initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                transition={{ type: "spring", bounce: 0.5, delay: 0.2 }}
-                                className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-none drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                                transition={{ type: "spring", bounce: 0.4, delay: 0.2 }}
+                                className="text-5xl md:text-8xl font-black text-white tracking-normal leading-none bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-500 drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]"
                             >
                                 Dhruvi Patel
                             </motion.span>
                         </h1>
                     </motion.div>
-                    <div className="h-10 md:h-12 mb-6">
-                        <h2 className="text-2xl md:text-3xl text-gray-300 flex items-center">
-                            <span className="text-neon-cyan mr-2 font-mono">{'>'}</span>
-                            <span>{displayText}</span>
-                            <span className="w-1 h-8 bg-neon-cyan ml-2 animate-pulse" />
+                    <div className="h-10 md:h-12 mb-8">
+                        <h2 className="text-2xl md:text-4xl text-gray-300 flex items-center">
+                            <span className="text-blue-500 mr-2 font-mono">{'>'}</span>
+                            <span>I'm a {displayText}</span>
+                            <span className="w-1.5 h-10 bg-blue-500 ml-2 animate-bounce" />
                         </h2>
                     </div>
-                    <p className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400 text-lg mb-8 max-w-lg leading-relaxed font-light">
-                        I build high-performance, futuristic web applications with modern technologies.
-                        Passionate about AI, Space, and creating immersive user experiences.
+                    <p className="text-blue-100/80 text-lg mb-10 max-w-lg leading-relaxed font-light drop-shadow-sm">
+                        Building high-performance, futuristic web applications with modern technologies.
+                        Passionate about AI, Clean Architecture, and immersive user experiences.
                     </p>
 
                     <div className="flex flex-wrap gap-4 mb-8">
@@ -113,7 +114,7 @@ const Hero = () => {
                                 href={href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                whileHover={{ scale: 1.2, color: '#00f3ff' }}
+                                whileHover={{ scale: 1.2, color: '#60a5fa' }}
                                 className="text-gray-400 transition-colors"
                             >
                                 <Icon size={30} />
@@ -123,24 +124,25 @@ const Hero = () => {
                 </motion.div>
 
                 {/* Right Content - Glowing Profile */}
-                {/* Right Content - Glowing Profile */}
                 <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="relative flex justify-center"
+                    className="relative flex justify-center order-1 md:order-2 mb-12 md:mb-0"
                 >
-                    <div className="relative w-80 h-80 md:w-96 md:h-96">
-                        <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan to-purple-600 rounded-full blur-[50px] opacity-50 animate-pulse" />
-                        <div className="absolute inset-4 bg-slate-900 rounded-2xl border border-white/10 overflow-hidden shadow-2xl transform transition-transform duration-500 hover:rotate-3">
-                            <img
-                                src={profileImg}
-                                alt="Dhruvi Patel"
-                                className="w-full h-full object-cover"
-                                onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
-                            />
-                            <div className="hidden w-full h-full bg-slate-800 flex items-center justify-center text-gray-500 text-6xl">
-                                DP
+                    <div className="relative w-72 h-72 md:w-[400px] md:h-[400px]">
+                        <div className="absolute inset-0 bg-blue-500 rounded-full blur-[60px] opacity-20 animate-pulse" />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 via-cyan-400 to-indigo-600 rounded-full p-1.5 shadow-[0_0_50px_rgba(59,130,246,0.4)]">
+                            <div className="w-full h-full rounded-full border-4 border-slate-900 overflow-hidden bg-slate-800">
+                                <img
+                                    src="https://res.cloudinary.com/db3htfvvx/image/upload/v1774799881/Screenshot_2026-03-10_082843_wdnbct.png"
+                                    alt="Dhruvi Patel"
+                                    className="w-full h-full object-cover"
+                                    onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
+                                />
+                                <div className="hidden w-full h-full bg-slate-800 items-center justify-center text-gray-500 text-6xl">
+                                    DP
+                                </div>
                             </div>
                         </div>
                     </div>

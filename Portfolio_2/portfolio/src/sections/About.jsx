@@ -7,10 +7,10 @@ import { Helmet } from 'react-helmet-async';
 
 const About = () => {
     const highlights = [
-        { label: "Experience", value: "2+ Years", color: "text-neon-cyan" },
-        { label: "Projects", value: "30+", color: "text-purple-400" },
-        { label: "Clients", value: "15+", color: "text-blue-400" },
-        { label: "Tech Stack", value: "10+", color: "text-pink-400" },
+        { label: "Experience", value: "2+ Years", color: "text-blue-400" },
+        { label: "Projects", value: "30+", color: "text-cyan-400" },
+        { label: "Clients", value: "15+", color: "text-indigo-400" },
+        { label: "Tech Stack", value: "10+", color: "text-blue-500" },
     ];
 
     return (
@@ -20,8 +20,8 @@ const About = () => {
                 <meta name="description" content="Learn more about Dhruvi Patel, a Full-Stack Developer with experience in building responsive, modern web applications." />
             </Helmet>
             {/* Background Glows */}
-            <div className="absolute top-1/4 -left-20 w-96 h-96 bg-neon-cyan/10 rounded-full blur-[120px] animate-pulse" />
-            <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] animate-pulse" />
+            <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
+            <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] animate-pulse" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <SectionTitle title="About Me" subtitle="Pioneering the next generation of web experiences" />
@@ -34,7 +34,7 @@ const About = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
-                            I am a <span className="text-neon-cyan">Full-Stack Architect</span> <br /> 
+                            I am a <span className="text-blue-400">Full-Stack Architect</span> <br /> 
                             based in India.
                         </h3>
                         <p className="text-gray-300 text-lg leading-relaxed mb-8">
@@ -64,12 +64,12 @@ const About = () => {
                         viewport={{ once: true }}
                         className="relative"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan to-purple-600 rounded-[3rem] rotate-3 opacity-20 blur-xl" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-[3rem] rotate-3 opacity-20 blur-xl" />
                         <div className="relative p-1 bg-gradient-to-br from-white/20 to-transparent rounded-[3rem] overflow-hidden backdrop-blur-3xl border border-white/10">
                             <div className="bg-slate-900/40 p-12 rounded-[2.8rem]">
                                 <div className="space-y-8">
                                     <div className="flex gap-4 items-start">
-                                        <div className="w-12 h-12 rounded-full bg-neon-cyan/20 flex items-center justify-center text-neon-cyan shrink-0">
+                                        <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
                                             <Zap size={24} />
                                         </div>
                                         <div>
@@ -78,7 +78,7 @@ const About = () => {
                                         </div>
                                     </div>
                                     <div className="flex gap-4 items-start">
-                                        <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
+                                        <div className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0">
                                             <Cpu size={24} />
                                         </div>
                                         <div>
@@ -87,7 +87,7 @@ const About = () => {
                                         </div>
                                     </div>
                                     <div className="flex gap-4 items-start">
-                                        <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                                        <div className="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
                                             <Terminal size={24} />
                                         </div>
                                         <div>
