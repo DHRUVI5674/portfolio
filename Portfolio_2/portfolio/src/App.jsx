@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Background from './components/Background';
 import Hero from './sections/Hero';
 import About from './sections/About';
+import Resume from './sections/Resume';
 import Projects from './sections/Projects';
 import Certificates from './sections/Certificates';
 import Hackathons from './sections/Hackathons';
@@ -16,7 +17,7 @@ import Profiles from './sections/Profiles';
 import SplashScreen from './components/SplashScreen';
 
 // All sections in order — ids must match the `id` on each <section>
-const SECTION_IDS = ['hero', 'about', 'skills', 'projects', 'certificates', 'hackathons', 'education', 'leetcode', 'contact'];
+const SECTION_IDS = ['hero', 'about', 'resume', 'skills', 'projects', 'certificates', 'hackathons', 'education', 'leetcode', 'contact'];
 
 function ScrollSpy() {
   const isClickScrolling = useRef(false); // flag set by navbar clicks
@@ -108,6 +109,7 @@ function App() {
         <main>
           <Hero />
           <About />
+          <Resume />
           <Skills />
           <Projects />
           <Certificates />

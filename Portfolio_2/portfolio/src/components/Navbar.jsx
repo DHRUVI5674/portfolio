@@ -53,30 +53,21 @@ const Navbar = () => {
           </span>
         </button>
 
-        {/* Center: Desktop Menu */}
-        <div className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2 space-x-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={`/${link.id}`}
-              onClick={(e) => handleNavClick(e, link.id)}
-              className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 font-medium tracking-wide cursor-pointer no-underline"
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
-
-        {/* Right: Resume Button & Mobile Trigger */}
-        <div className="flex items-center gap-6">
-          <a
-            href="/resume.pdf"
-            download
-            className="hidden md:flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-full text-sm font-bold text-white hover:from-blue-500 hover:to-indigo-600 transition-all duration-300 shadow-[0_4px_14px_0_rgba(79,70,229,0.39)] hover:shadow-[0_6px_20px_rgba(79,70,229,0.23)] hover:-translate-y-0.5 group border border-blue-500/30"
-          >
-            <Download size={18} className="group-hover:scale-110 transition-transform" />
-            <span>Download Resume</span>
-          </a>
+        {/* Right: Desktop Menu & Mobile Trigger */}
+        <div className="flex items-center ml-auto">
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={`/${link.id}`}
+                onClick={(e) => handleNavClick(e, link.id)}
+                className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 font-medium tracking-wide cursor-pointer no-underline"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
 
           {/* Mobile Menu Button */}
           <button className="md:hidden text-white p-2 hover:bg-white/5 rounded-lg transition-colors" onClick={() => setIsOpen(!isOpen)}>
@@ -105,15 +96,6 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <a
-                href="/resume.pdf"
-                download
-                onClick={() => setIsOpen(false)}
-                className="w-[90%] mx-auto flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl text-white font-bold text-lg shadow-[0_4px_14px_0_rgba(79,70,229,0.39)] mt-2 border border-blue-500/30"
-              >
-                <Download size={20} />
-                Download Resume
-              </a>
             </div>
           </motion.div>
         )}

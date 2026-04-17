@@ -100,6 +100,24 @@ const projects = [
         category: "Figma",
         previewImage: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=800&q=80",
         figmaLink: "https://www.figma.com/design/2yqtMlzU2CkJjZ2LpUupFQ/Untitled?node-id=0-1&t=bjjdFCxFzwt7Og9l-1"
+    },
+    {
+        title: "2048 Game",
+        description: "A sleek, modern web version of the classic 2048 sliding puzzle game. Merge matching numbers to reach the ultimate 2048 tile! Built smoothly using HTML, CSS, and JS.",
+        tech: ["HTML", "CSS", "JAVASCRIPT"],
+        category: "Games",
+        imageUrl: "/2048-game.png",
+        demoUrl: "https://2048-dhruvipatel-game.netlify.app",
+        projectUrl: "https://github.com/DHRUVI5674/2048_game.git"
+    },
+    {
+        title: "Whack a Mole",
+        description: "A fun and interactive Whack-a-Mole classic browser game. Test your reflexes and hit those moles before the timer runs out! Developed with HTML, CSS, and JS.",
+        tech: ["HTML", "CSS", "JAVASCRIPT"],
+        category: "Games",
+        imageUrl: "/whack-a-mole.png",
+        demoUrl: "https://whack-a-mole-dhruvipatel.netlify.app",
+        projectUrl: "https://github.com/DHRUVI5674/whack_a_mole.git"
     }
 ];
 

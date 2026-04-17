@@ -13,7 +13,7 @@ const About = () => {
     ];
 
     return (
-        <section id="about" className="py-32 relative overflow-hidden">
+        <section id="about" className="py-16 relative overflow-hidden">
             <Helmet>
                 <title>About Me | Dhruvi Patel</title>
                 <meta name="description" content="Learn more about Dhruvi Patel, a Full-Stack Developer and CSE student specializing in the MERN Stack." />
@@ -26,7 +26,7 @@ const About = () => {
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <SectionTitle title="About Me" subtitle="Bridging imagination with technical excellence" />
 
-                <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+                <div className="grid lg:grid-cols-2 gap-16 items-center mb-12">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}

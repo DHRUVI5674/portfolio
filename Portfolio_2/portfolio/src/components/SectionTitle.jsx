@@ -23,7 +23,7 @@ const SectionTitle = ({ title, subtitle }) => {
                     {subtitle}
                 </motion.p>
             )}
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-neon-cyan to-transparent mx-auto mt-4 rounded-full" />
+            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto mt-4 rounded-full" />
         </div>
     );
 };
