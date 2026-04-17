@@ -8,13 +8,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Import all certificate images from assets
 import freecodecampImg from '../assets/freecodecamp_responsive.png';
 import letsupgradeImg from '../assets/letsupgrade_react.png';
-import cCertImg from '../assets/c_cert.png';
 import cSoloImg from '../assets/c_solo.png';
 import cppSimpliImg from '../assets/cpp_simpli.png';
 import cppSoloImg from '../assets/cpp_solo.png';
-import cssCertImg from '../assets/css_cert.png';
 import cssSoloImg from '../assets/css_solo.png';
-import htmlCertImg from '../assets/html_cert.png';
 import htmlSoloImg from '../assets/html_solo.png';
 import figmaLetsImg from '../assets/figma_lets.png';
 import ghUnstopImg from '../assets/gh_unstop.png';
@@ -23,7 +20,6 @@ import iiscUnstopImg from '../assets/iisc_banglore_unstop.png';
 import jsHackerImg from '../assets/js_hacker.png';
 import jsSoloImg from '../assets/js_solo.png';
 import problemHackerImg from '../assets/problem_hacker.png';
-import problemSolvingImg from '../assets/problem_solving_cert.png';
 
 const certificates = [
     {
@@ -55,18 +51,32 @@ const certificates = [
         image: cppSimpliImg
     },
     {
+        title: "C++ Programming",
+        issuer: "SoloLearn",
+        date: "2026",
+        description: "Certification in C++ covering object-oriented programming, classes, and inheritance patterns.",
+        image: cppSoloImg
+    },
+    {
         title: "Modern JavaScript",
         issuer: "HackerRank",
-        date: "2025",
+        date: "2026",
         description: "Validation of JavaScript proficiency, covering ES6+ features, closures, and asynchronous programming patterns.",
         image: jsHackerImg
     },
     {
+        title: "JavaScript Basics",
+        issuer: "SoloLearn",
+        date: "2026",
+        description: "Foundational certification in JavaScript programming, focusing on core logic and DOM manipulation.",
+        image: jsSoloImg
+    },
+    {
         title: "Problem Solving Skills",
         issuer: "HackerRank",
-        date: "2025",
+        date: "2026",
         description: "Certified in algorithmic problem-solving and logical reasoning through rigorous coding challenges and data structure implementations.",
-        image: problemSolvingImg
+        image: problemHackerImg
     },
     {
         title: "UI/UX Design with Figma",
@@ -76,25 +86,25 @@ const certificates = [
         image: figmaLetsImg
     },
     {
-        title: "GCET Hackathon",
-        issuer: "Unstop",
-        date: "2026",
+        title: "GitHub Global Campus",
+        issuer: "GitHub & Unstop",
+        date: "2025",
         description: "Recognition for active participation in the global developer community and mastery of version control workflows.",
         image: ghUnstopImg
     },
     {
         title: "Advanced CSS Styling",
         issuer: "SoloLearn",
-        date: "2025",
+        date: "2026",
         description: "In-depth study of layout engines, animations, and complex styling patterns for high-fidelity web experiences.",
-        image: cssCertImg
+        image: cssSoloImg
     },
     {
         title: "HTML Architecture",
         issuer: "SoloLearn",
-        date: "2025",
+        date: "2026",
         description: "Mastery of semantic markup and document object model structure for optimal SEO and accessibility.",
-        image: htmlCertImg
+        image: htmlSoloImg
     },
     {
         title: "IIT Madras Event",
