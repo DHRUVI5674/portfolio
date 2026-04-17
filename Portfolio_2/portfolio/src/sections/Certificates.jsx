@@ -45,7 +45,7 @@ const certificates = [
         issuer: "SoloLearn",
         date: "2026",
         description: "Verified certification in C programming, mastering syntax, control flows, and efficient memory management techniques.",
-        image: cCertImg
+        image: cSoloImg
     },
     {
         title: "C++ Advanced Course",
@@ -57,14 +57,14 @@ const certificates = [
     {
         title: "Modern JavaScript",
         issuer: "HackerRank",
-        date: "2026",
+        date: "2025",
         description: "Validation of JavaScript proficiency, covering ES6+ features, closures, and asynchronous programming patterns.",
         image: jsHackerImg
     },
     {
         title: "Problem Solving Skills",
         issuer: "HackerRank",
-        date: "2026",
+        date: "2025",
         description: "Certified in algorithmic problem-solving and logical reasoning through rigorous coding challenges and data structure implementations.",
         image: problemSolvingImg
     },
@@ -76,23 +76,23 @@ const certificates = [
         image: figmaLetsImg
     },
     {
-        title: "GitHub Global Campus",
-        issuer: "GitHub & Unstop",
-        date: "2025",
+        title: "GCET Hackathon",
+        issuer: "Unstop",
+        date: "2026",
         description: "Recognition for active participation in the global developer community and mastery of version control workflows.",
         image: ghUnstopImg
     },
     {
         title: "Advanced CSS Styling",
         issuer: "SoloLearn",
-        date: "2026",
+        date: "2025",
         description: "In-depth study of layout engines, animations, and complex styling patterns for high-fidelity web experiences.",
         image: cssCertImg
     },
     {
         title: "HTML Architecture",
         issuer: "SoloLearn",
-        date: "2026",
+        date: "2025",
         description: "Mastery of semantic markup and document object model structure for optimal SEO and accessibility.",
         image: htmlCertImg
     },
@@ -141,11 +141,10 @@ const Certificates = () => {
                 <div className="flex justify-center mb-12">
                     <button
                         onClick={() => setShowAll(!showAll)}
-                        className={`flex items-center gap-2.5 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest border transition-all duration-300 ${
-                            showAll
-                                ? 'bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-600/20'
-                                : 'bg-white/5 text-gray-400 border-white/10 hover:border-blue-500/40 hover:text-white'
-                        }`}
+                        className={`flex items-center gap-2.5 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest border transition-all duration-300 ${showAll
+                            ? 'bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-600/20'
+                            : 'bg-white/5 text-gray-400 border-white/10 hover:border-blue-500/40 hover:text-white'
+                            }`}
                     >
                         {showAll ? (
                             <><SlidersHorizontal size={14} /> Switch to Slider</>
@@ -224,9 +223,9 @@ const CertificateCard = ({ cert }) => (
                 src={cert.image}
                 alt={cert.title}
                 className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-                onError={(e) => { 
+                onError={(e) => {
                     e.target.onerror = null; // prevents infinite loop
-                    e.target.src = ''; 
+                    e.target.src = '';
                     e.target.parentElement.classList.add('bg-slate-800');
                 }}
             />
