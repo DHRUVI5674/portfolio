@@ -224,7 +224,11 @@ const CertificateCard = ({ cert }) => (
                 src={cert.image}
                 alt={cert.title}
                 className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-                onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=Certificate'; }}
+                onError={(e) => { 
+                    e.target.onerror = null; // prevents infinite loop
+                    e.target.src = ''; 
+                    e.target.parentElement.classList.add('bg-slate-800');
+                }}
             />
         </div>
 

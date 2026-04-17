@@ -10,13 +10,20 @@ const Contact = () => {
     const [isSending, setIsSending] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
+        nmae: '',
         email: '',
         message: '',
         time: ''
     });
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setFormData({ 
+            ...formData, 
+            [name]: value,
+            // Sync nmae with name for the EmailJS template variable
+            ...(name === 'name' ? { nmae: value } : {})
+        });
     };
 
     const handleSubmit = (e) => {
@@ -25,21 +32,31 @@ const Contact = () => {
 
         // EMAILJS SERVICE ID, TEMPLATE ID, AND PUBLIC KEY
         const SERVICE_ID = 'service_qfntaar';
-        const TEMPLATE_ID = 'template_jps7r8b';
+        const TEMPLATE_ID = 'template_c8yl38d';
         const PUBLIC_KEY = 'QKFS18dSWKVZLrE8g';
+
+        // Initialize EmailJS with Public Key
+        emailjs.init(PUBLIC_KEY);
 
         // Add current time for the {{time}} placeholder
         const currentTime = new Date().toLocaleString();
-        const updatedFormData = { ...formData, time: currentTime };
+        const templateParams = {
+            name: formData.name,
+            nmae: formData.nmae,
+            email: formData.email,
+            message: formData.message,
+            time: currentTime
+        };
 
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, updatedFormData, PUBLIC_KEY)
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
             .then((result) => {
-                alert('Message sent successfully!');
-                setFormData({ name: '', email: '', message: '', time: '' });
+                alert('Success! Message sent.');
+                setFormData({ name: '', nmae: '', email: '', message: '', time: '' });
                 setIsSending(false);
             }, (error) => {
-                console.error(error.text);
-                alert('Failed to send message. Please try again.');
+                console.error('EmailJS Error Object:', error);
+                const errorDetail = error?.text || JSON.stringify(error) || 'Unknown error';
+                alert(`Error: ${errorDetail}`);
                 setIsSending(false);
             });
     };

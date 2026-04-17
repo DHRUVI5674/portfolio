@@ -11,12 +11,31 @@ const LeetCode = () => {
     const fetchLeetData = useCallback(async () => {
         setLoading(true);
         try {
-            // Fetch Stats
-            const statsRes = await fetch(`https://leetcode-stats-api.herokuapp.com/${handle}`);
-            const statsData = await statsRes.json();
+            const [profileRes, solvedRes] = await Promise.all([
+                fetch(`https://alfa-leetcode-api.onrender.com/${handle}`),
+                fetch(`https://alfa-leetcode-api.onrender.com/${handle}/solved`)
+            ]);
             
-            if (statsData.status === 'success') {
-                setStats(statsData);
+            const profileData = await profileRes.json();
+            const solvedData = await solvedRes.json();
+            
+            if (profileData && solvedData && solvedData.totalSubmissionNum) {
+                const totalSubmissions = solvedData.totalSubmissionNum[0]?.submissions || 1;
+                const acSubmissions = solvedData.acSubmissionNum[0]?.submissions || 0;
+                const acceptanceRate = ((acSubmissions / totalSubmissions) * 100).toFixed(1);
+
+                setStats({
+                    totalSolved: solvedData.solvedProblem || 0,
+                    easySolved: solvedData.easySolved || 0,
+                    mediumSolved: solvedData.mediumSolved || 0,
+                    hardSolved: solvedData.hardSolved || 0,
+                    totalQuestions: 3317,
+                    totalEasy: 832,
+                    totalMedium: 1748,
+                    totalHard: 737,
+                    ranking: profileData.ranking || 0,
+                    acceptanceRate: parseFloat(acceptanceRate) || 0
+                });
             }
         } catch (err) {
             console.error("Error fetching LeetCode data:", err);

@@ -93,8 +93,8 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-wrap gap-4 mb-8">
-                        <Button variant="primary" onClick={() => document.getElementById('projects')?.scrollIntoView()}>
-                            View Projects
+                        <Button variant="primary" onClick={() => window.open('https://drive.google.com/file/d/1LQFm1HmsJxDw9cZnLp24CQLwutL-PMsg/view', '_blank')}>
+                            View Resume
                         </Button>
                         <Button variant="secondary" onClick={() => document.getElementById('contact')?.scrollIntoView()}>
                             Get in Touch

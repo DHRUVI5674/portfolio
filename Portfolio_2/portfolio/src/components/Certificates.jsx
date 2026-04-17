@@ -1,10 +1,14 @@
 import React from 'react';
+import freecodecampResponsive from '../assets/freecodecamp_responsive.png';
+import cppSimpli from '../assets/cpp_simpli.png';
+import problemHacker from '../assets/problem_hacker.png';
+import cSolo from '../assets/c_solo.png';
 
 function Certificates() {
   const certificates = [
     {
       id: 1,
-      image: "📚", // Replace with actual image URL
+      image: freecodecampResponsive,
       title: "Legacy Web Design v8",
       issuer: "FreeCodeCamp",
       description: "Certification covering essential web design concepts and responsive layouts. Built a strong foundation in HTML, CSS, and modern UI design practices.",
@@ -14,7 +18,7 @@ function Certificates() {
     },
     {
       id: 2,
-      image: "⚡", // Replace with actual image URL
+      image: cppSimpli,
       title: "C++ Advanced Course",
       issuer: "Simplilearn & Ahmad Bazzi",
       description: "Covering advanced programming concepts and object-oriented principles. Enhanced skills in C++ development, problem-solving, and efficient code design.",
@@ -24,7 +28,7 @@ function Certificates() {
     },
     {
       id: 3,
-      image: "💡", // Replace with actual image URL
+      image: problemHacker,
       title: "Problem Solving",
       issuer: "HackerRank",
       description: "Focusing on algorithmic thinking and efficient solutions. Strengthened skills in data structures, logic building, and coding problem analysis.",
@@ -34,7 +38,7 @@ function Certificates() {
     },
     {
       id: 4,
-      image: "🔤", // Replace with actual image URL
+      image: cSolo,
       title: "Introduction to C",
       issuer: "SoloLearn",
       description: "Covering core programming concepts and syntax. Built a strong foundation in C programming, problem-solving, and logical thinking.",
@@ -60,8 +64,8 @@ function Certificates() {
                 className="certificate-image"
                 style={{ backgroundColor: cert.color }}
               >
-                <div className="certificate-icon">
-                  {cert.image}
+                <div className="certificate-icon w-full h-full overflow-hidden flex items-center justify-center p-2">
+                  <img src={cert.image} alt={cert.title} className="w-full h-full object-contain rounded-lg" />
                 </div>
                 <div className="certificate-badge">
                   <span className="badge-text">Verified</span>

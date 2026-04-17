@@ -3,6 +3,8 @@ import { Menu, X, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
+import logo from '../assets/logo.png';
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -45,12 +47,13 @@ const Navbar = () => {
         {/* Left: Brand — click to scroll to top */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="group flex items-center justify-center relative w-12 h-12 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-slate-800 to-black border border-cyan-500/30 hover:border-cyan-400 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] overflow-hidden"
+          className="group relative h-12 md:h-16 flex items-center justify-center transition-all duration-300"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/30 via-purple-500/10 to-transparent group-hover:from-cyan-400/50 group-hover:via-purple-500/30 transition-all duration-500 blur-[2px]" />
-          <span className="relative z-10 text-2xl md:text-3xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 via-blue-400 to-purple-500 group-hover:from-white group-hover:via-cyan-200 group-hover:to-cyan-400 transition-all duration-500 transform group-hover:scale-110 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-            DP
-          </span>
+          <img 
+            src={logo} 
+            alt="Dhruvi Patel Logo" 
+            className="h-full w-auto object-contain transform group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]"
+          />
         </button>
 
         {/* Right: Desktop Menu & Mobile Trigger */}
