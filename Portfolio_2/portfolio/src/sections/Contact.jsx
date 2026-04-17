@@ -94,54 +94,20 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        <div className="pt-8 space-y-4">
-                            <h4 className="text-xl font-semibold text-white">Social Profiles</h4>
-                            <div className="flex space-x-4">
-                                <a
-                                    href="https://github.com/DHRUVI5674"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-neon-cyan hover:bg-white/10 transition-all"
-                                    title="GitHub"
-                                >
-                                    <Github size={24} />
-                                </a>
-                                <a
-                                    href="https://www.linkedin.com/in/dhruvi-patel-bb2b9239a/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-neon-cyan hover:bg-white/10 transition-all"
-                                    title="LinkedIn"
-                                >
-                                    <Linkedin size={24} />
-                                </a>
-                                <a
-                                    href="https://twitter.com/patel_dhru76113"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-neon-cyan hover:bg-white/10 transition-all"
-                                    title="Twitter"
-                                >
-                                    <Twitter size={24} />
-                                </a>
-                                <a
-                                    href="https://www.youtube.com/@Dhruvi_Patel_6"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-neon-cyan hover:bg-white/10 transition-all"
-                                    title="YouTube"
-                                >
-                                    <Youtube size={24} />
-                                </a>
-                                <a
-                                    href="https://leetcode.com/u/TR0kHGhQN9/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-neon-cyan hover:bg-white/10 transition-all"
-                                    title="LeetCode"
-                                >
-                                    <Code size={24} />
-                                </a>
+                        <div className="pt-8 space-y-5">
+                            <h4 className="text-xl font-semibold text-white">Availability</h4>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
+                                    <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Response Time</p>
+                                    <p className="text-white text-lg font-bold">Within 24h</p>
+                                </div>
+                                <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
+                                    <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Status</p>
+                                    <p className="text-green-400 text-lg font-bold flex items-center gap-2">
+                                        <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                                        Open to Work
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </motion.div>
@@ -154,7 +120,7 @@ const Contact = () => {
                         className="relative"
                     >
                         <div className="absolute -inset-4 bg-gradient-to-r from-neon-cyan/20 to-purple-600/20 rounded-3xl blur-2xl opacity-50 block" />
-                        
+
                         <form
                             ref={formRef}
                             className="relative space-y-6 backdrop-blur-2xl bg-black/40 p-10 rounded-3xl border border-white/10 shadow-2xl"

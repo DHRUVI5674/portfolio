@@ -119,48 +119,45 @@ const Certificates = () => {
     const scroll = (direction) => {
         const { current } = scrollRef;
         if (current) {
-            const scrollAmount = 350;
             current.scrollBy({
-                left: direction === 'left' ? -scrollAmount : scrollAmount,
+                left: direction === 'left' ? -360 : 360,
                 behavior: 'smooth'
             });
         }
     };
 
     return (
-        <section id="certificates" className="py-24 relative overflow-hidden bg-black/40">
-            {/* Decorative background elements */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-[100px] -mr-48 -mt-48" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-[100px] -ml-48 -mb-48" />
+        <section id="certificates" className="py-24 relative overflow-hidden bg-[#050505]">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[100px] -ml-48 -mb-48 pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <SectionTitle 
-                    title="Certifications" 
-                    subtitle="Validating my expertise through rigorous training and milestones" 
+                <SectionTitle
+                    title="Certifications"
+                    subtitle="Validating my expertise through rigorous training and milestones"
                 />
 
+                {/* Toggle View */}
                 <div className="flex justify-center mb-12">
-                    <button 
+                    <button
                         onClick={() => setShowAll(!showAll)}
-                        className="flex items-center gap-2 px-6 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all group"
+                        className={`flex items-center gap-2.5 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest border transition-all duration-300 ${
+                            showAll
+                                ? 'bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-600/20'
+                                : 'bg-white/5 text-gray-400 border-white/10 hover:border-blue-500/40 hover:text-white'
+                        }`}
                     >
                         {showAll ? (
-                            <>
-                                <SlidersHorizontal size={18} className="text-blue-400" />
-                                <span className="text-sm font-medium text-gray-300">Switch to Slider</span>
-                            </>
+                            <><SlidersHorizontal size={14} /> Switch to Slider</>
                         ) : (
-                            <>
-                                <LayoutGrid size={18} className="text-blue-400" />
-                                <span className="text-sm font-medium text-gray-300">View All Grid</span>
-                            </>
+                            <><LayoutGrid size={14} /> View All Grid</>
                         )}
                     </button>
                 </div>
 
                 <AnimatePresence mode="wait">
                     {showAll ? (
-                        <motion.div 
+                        <motion.div
                             key="grid"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -172,36 +169,33 @@ const Certificates = () => {
                             ))}
                         </motion.div>
                     ) : (
-                        <motion.div 
+                        <motion.div
                             key="slider"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             className="relative group/slider"
                         >
-                            {/* Navigation Arrows */}
-                            <button 
+                            <button
                                 onClick={() => scroll('left')}
-                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 p-3 bg-slate-900/80 border border-white/10 rounded-full text-white opacity-0 group-hover/slider:opacity-100 group-hover/slider:translate-x-0 transition-all hover:bg-blue-600 shadow-xl"
+                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 p-3 bg-[#0d1117]/90 border border-white/10 rounded-full text-white opacity-0 group-hover/slider:opacity-100 group-hover/slider:translate-x-0 transition-all hover:bg-blue-600 shadow-xl"
                             >
-                                <ChevronLeft size={24} />
+                                <ChevronLeft size={20} />
                             </button>
-                            
-                            <button 
+                            <button
                                 onClick={() => scroll('right')}
-                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 p-3 bg-slate-900/80 border border-white/10 rounded-full text-white opacity-0 group-hover/slider:opacity-100 group-hover/slider:translate-x-0 transition-all hover:bg-blue-600 shadow-xl"
+                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 p-3 bg-[#0d1117]/90 border border-white/10 rounded-full text-white opacity-0 group-hover/slider:opacity-100 group-hover/slider:translate-x-0 transition-all hover:bg-blue-600 shadow-xl"
                             >
-                                <ChevronRight size={24} />
+                                <ChevronRight size={20} />
                             </button>
 
-                            {/* Slider Container */}
-                            <div 
+                            <div
                                 ref={scrollRef}
-                                className="flex gap-8 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory px-4"
+                                className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory px-2"
                                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                             >
                                 {certificates.map((cert, index) => (
-                                    <div key={index} className="min-w-full md:min-w-[45%] lg:min-w-[31%] snap-center">
+                                    <div key={index} className="min-w-full md:min-w-[45%] lg:min-w-[32%] snap-center">
                                         <CertificateCard cert={cert} />
                                     </div>
                                 ))}
@@ -215,46 +209,57 @@ const Certificates = () => {
 };
 
 const CertificateCard = ({ cert }) => (
-    <Card className="h-full flex flex-col group/card border-white/10 hover:border-blue-500/50 bg-slate-900/50 backdrop-blur-sm">
-        <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-slate-800">
-            <img 
-                src={cert.image} 
-                alt={cert.title} 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110 opacity-70 group-hover/card:opacity-100"
-                onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=Certificate' }}
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="group relative h-full flex flex-col bg-[#0d1117] rounded-[1.5rem] border border-white/5 hover:border-blue-500/30 transition-all duration-500 overflow-hidden shadow-xl hover:shadow-blue-500/10"
+    >
+        {/* Top glow on hover */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+        {/* Certificate Image - Full View */}
+        <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#0a0e14] flex items-center justify-center p-3">
+            <img
+                src={cert.image}
+                alt={cert.title}
+                className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                onError={(e) => { e.target.src = 'https://via.placeholder.com/400x300?text=Certificate'; }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60" />
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-opacity">
-                <div className="w-16 h-16 rounded-full bg-blue-500/20 backdrop-blur-md flex items-center justify-center border border-white/20">
-                    <Award className="text-blue-400 w-8 h-8" />
-                </div>
-            </div>
         </div>
 
-        <div className="flex-grow flex flex-col text-center px-2">
-            <div className="mb-4">
-                <h3 className="text-xl font-bold text-white mb-1 group-hover/card:text-blue-400 transition-colors uppercase tracking-tight">
-                    {cert.title}
-                </h3>
-                <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase">
-                    {cert.issuer} • {cert.date}
-                </p>
+        {/* Content - Expanded */}
+        <div className="flex flex-col flex-grow p-5 gap-4">
+            {/* Issuer + Date badges */}
+            <div className="flex items-center gap-2 flex-wrap">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-500/10 rounded-full border border-blue-500/20 text-[10px] font-bold uppercase tracking-wider text-blue-400">
+                    <Award size={10} />
+                    {cert.issuer}
+                </span>
+                <span className="px-2.5 py-1 bg-white/5 rounded-full border border-white/10 text-[10px] font-bold text-gray-400">
+                    {cert.date}
+                </span>
             </div>
-            
-            <p className="text-gray-400 text-xs leading-relaxed mb-6 flex-grow italic line-clamp-3">
-                "{cert.description}"
+
+            <h3 className="text-base font-bold text-white leading-snug tracking-tight group-hover:text-blue-300 transition-colors duration-300">
+                {cert.title}
+            </h3>
+
+            <p className="text-gray-400 text-sm leading-relaxed flex-grow">
+                {cert.description}
             </p>
 
-            <Button 
-                variant="primary" 
-                className="w-full text-xs py-2.5 border border-blue-500/30 font-medium flex items-center justify-center gap-2 group/btn transition-all hover:bg-blue-600/10"
+            {/* View Certificate Button */}
+            <button
                 onClick={() => window.open(cert.image, '_blank')}
+                className="mt-auto w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest border border-white/8 bg-white/[0.03] text-gray-300 hover:bg-blue-600 hover:border-blue-500 hover:text-white transition-all duration-300 group/btn"
             >
-                Preview Certificate 
-                <ArrowUpRight size={16} className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-            </Button>
+                <Award size={13} className="text-blue-400 group-hover/btn:text-white transition-colors" />
+                View Certificate
+                <ArrowUpRight size={13} className="opacity-50 group-hover/btn:opacity-100 transition-all" />
+            </button>
         </div>
-    </Card>
+    </motion.div>
 );
 
 export default Certificates;

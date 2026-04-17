@@ -1,15 +1,14 @@
 import React from 'react';
 import SectionTitle from '../components/SectionTitle';
-import Button from '../components/Button';
-import { FileDown, Terminal, Cpu, Zap } from 'lucide-react';
+import { Terminal, Cpu, Zap, Trophy, Shield, Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 
 const About = () => {
     const highlights = [
-        { label: "Experience", value: "2+ Years", color: "text-blue-400" },
-        { label: "Projects", value: "30+", color: "text-cyan-400" },
-        { label: "Clients", value: "15+", color: "text-indigo-400" },
+        { label: "LeetCode Solved", value: "150+", color: "text-blue-400" },
+        { label: "Projects Built", value: "10+", color: "text-cyan-400" },
+        { label: "Sem 1 SCPA", value: "10/10", color: "text-indigo-400" },
         { label: "Tech Stack", value: "10+", color: "text-blue-500" },
     ];
 
@@ -17,14 +16,15 @@ const About = () => {
         <section id="about" className="py-32 relative overflow-hidden">
             <Helmet>
                 <title>About Me | Dhruvi Patel</title>
-                <meta name="description" content="Learn more about Dhruvi Patel, a Full-Stack Developer with experience in building responsive, modern web applications." />
+                <meta name="description" content="Learn more about Dhruvi Patel, a Full-Stack Developer and CSE student specializing in the MERN Stack." />
             </Helmet>
+            
             {/* Background Glows */}
             <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
             <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] animate-pulse" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <SectionTitle title="About Me" subtitle="Pioneering the next generation of web experiences" />
+                <SectionTitle title="About Me" subtitle="Bridging imagination with technical excellence" />
 
                 <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
                     <motion.div
@@ -33,15 +33,15 @@ const About = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
-                            I am a <span className="text-blue-400">Full-Stack Architect</span> <br /> 
-                            based in India.
+                        <h3 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+                            Building <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">Scalable</span> & <br />
+                            Modern Web Apps
                         </h3>
                         <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                            With a passion for building high-performance, futuristic web applications, I specialize in the MERN stack. My approach combines technical precision with creative flair, ensuring every project is not just functional but also visually stunning.
+                            I'm a first-year <span className="text-white font-semibold underline decoration-blue-500/30">Computer Science Engineering student</span> at Swaminarayan University (Semester 1 SCPA: 10/10), specializing in the <span className="text-white font-semibold">MERN Stack</span>. Experienced in building production-grade systems including a full-stack healthcare platform and real-time communication tools.
                         </p>
                         <p className="text-gray-400 text-lg leading-relaxed mb-10">
-                            I thrive on solving complex architectural challenges and am constantly exploring the boundaries of modern technologies like AI and space-age UI design.
+                            Strong focus on <span className="text-white font-semibold">clean code, scalable architecture, and intuitive UI/UX</span>. I've solved 150+ problems on LeetCode with a strong grasp of arrays, strings, recursion, and dynamic programming.
                         </p>
                         
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
@@ -49,10 +49,10 @@ const About = () => {
                                 <motion.div 
                                     key={i}
                                     whileHover={{ y: -5 }}
-                                    className="p-4 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md"
+                                    className="p-4 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md hover:border-blue-500/30 transition-colors"
                                 >
                                     <div className={`text-2xl font-black mb-1 ${stat.color}`}>{stat.value}</div>
-                                    <div className="text-xs uppercase tracking-widest text-gray-500 font-bold">{stat.label}</div>
+                                    <div className="text-[10px] uppercase tracking-widest text-gray-500 font-bold leading-tight">{stat.label}</div>
                                 </motion.div>
                             ))}
                         </div>
@@ -100,10 +100,11 @@ const About = () => {
                         </div>
                     </motion.div>
                 </div>
-
             </div>
         </section>
     );
 };
 
 export default About;
+
+

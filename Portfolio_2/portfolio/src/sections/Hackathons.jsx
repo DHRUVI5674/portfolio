@@ -1,125 +1,156 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import SectionTitle from '../components/SectionTitle';
-import Card from '../components/Card';
-import { Trophy, Code2, Users, Lightbulb, Github, ExternalLink } from 'lucide-react';
+import { Trophy, Code2, Lightbulb, Github, ExternalLink, Calendar, MapPin, Users2, Rocket, Target, Cpu, CheckCircle2, Zap } from 'lucide-react';
 import hackathonImg from '../assets/hackathon.png';
 
 const hackathons = [
     {
-        title: "Global Tech Innovation Hackathon",
-        event: "TechFest 2026",
-        date: "March 2026",
+        title: "SU Innovation Hackathon 2026",
+        project: "Sanjeevani (Initial Version)",
+        event: "Sangam University × Sangam i-TBI",
+        badge: "Participant",
+        year: "2026",
+        venue: "Sangam University, Bhilwara",
+        team: "Team 4-Bits",
         image: hackathonImg,
-        experience: "Participating in this 48-hour challenge was an exhilarating journey into collaborative problem-solving. Working under pressure with a cross-functional team, I learned the importance of rapid prototyping and effective communication.",
-        projectDescription: "We developed 'EcoSync', an AI-powered platform that optimizes energy consumption in smart homes. I was responsible for building the real-time dashboard using React and integrating the IoT sensor data via a Node.js backend.",
-        achievements: ["Top 10 Finalist", "Special Mention for UI/UX", "Best Use of Cloud Tech"],
-        githubUrl: "https://github.com/DHRUVI5674",
-        demoUrl: "#"
+        quote: "Built with raw determination and nothing but adrenaline.",
+        description1: "Representing Swaminarayan University with 'Team 4-Bits', I spearheaded the development of industrial solutions during a relentless 48-hour innovation marathon in Bhilwara's iconic Textile City.",
+        description2: "We architected a high-performance prototype designed to modernize regional industrial workflows, transforming abstract challenges into tangible engineering successes under tight deadlines.",
+        contribution: "Architected scalable workflows, integrated real-time logic, and shipped a functional prototype within a 48-hour hackathon innovation cycle.",
+        impact: "Established a strong foundation for regional innovation, with judges acknowledging practical implementation and real-world problem-solving applicability.",
+        highlights: [
+            "Strategically represented Swaminarayan University",
+            "Delivered industrial prototype in 48 hours",
+            "Recognized for practical implementation"
+        ],
+        techStack: ["React", "Node.js", "Supabase", "Vercel"],
+        githubUrl: "https://github.com/DHRUVI5674/sanjeevani",
+        demoUrl: "https://sanjeevani-ochre.vercel.app/"
     }
 ];
 
 const Hackathons = () => {
     return (
-        <section id="hackathons" className="py-24 relative overflow-hidden bg-black/50">
-            {/* Background blue glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+        <section id="hackathons" className="py-24 relative overflow-hidden bg-[#050505] font-sans">
+            <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
                 <SectionTitle
                     title="Hackathons"
-                    subtitle="Competitive coding and collaborative innovation"
+                    subtitle="Engineering high-impact solutions through rapid innovation"
                 />
 
-                <div className="space-y-20">
+                <div className="space-y-12">
                     {hackathons.map((hack, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 50 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: index * 0.2 }}
-                            className="group"
+                            transition={{ duration: 0.7 }}
                         >
-                            <div className="grid lg:grid-cols-12 gap-12 items-center">
-                                {/* Image side */}
-                                <div className="lg:col-span-12 xl:col-span-5 relative">
-                                    <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-3xl opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500" />
-                                    <div className="relative overflow-hidden rounded-3xl border border-white/10 aspect-video lg:aspect-square">
-                                        <img
-                                            src={hack.image}
-                                            alt={hack.title}
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                                        <div className="absolute bottom-6 left-6">
-                                            <div className="flex items-center gap-3 bg-blue-600/90 backdrop-blur-md px-4 py-2 rounded-full border border-blue-400/30">
-                                                <Trophy size={20} className="text-yellow-400" />
-                                                <span className="text-white font-bold text-sm tracking-wide">{hack.event}</span>
+                            {/* Master Card */}
+                            <div className="bg-[#0d1117] border border-white/8 rounded-3xl overflow-hidden shadow-2xl">
+                                <div className="flex flex-col lg:flex-row">
+
+                                    {/* LEFT: Image + Quote + Buttons */}
+                                    <div className="lg:w-[42%] flex flex-col">
+                                        {/* Image */}
+                                        <div className="relative flex-1 min-h-[280px] lg:min-h-0 overflow-hidden">
+                                            <img
+                                                src={hack.image}
+                                                alt={hack.title}
+                                                className="w-full h-full object-cover"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117]/90 via-transparent to-transparent" />
+                                        </div>
+
+                                        {/* Buttons */}
+                                        <div className="p-5 border-t border-white/5">
+                                            <div className="flex gap-3">
+                                                <a
+                                                    href={hack.demoUrl}
+                                                    target="_blank" rel="noopener noreferrer"
+                                                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all"
+                                                >
+                                                    <ExternalLink size={14} /> Live Demo
+                                                </a>
+                                                <a
+                                                    href={hack.githubUrl}
+                                                    target="_blank" rel="noopener noreferrer"
+                                                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl text-xs font-bold uppercase tracking-wider transition-all"
+                                                >
+                                                    <Github size={14} /> Repository
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                {/* Content side */}
-                                <div className="lg:col-span-12 xl:col-span-7 space-y-8">
-                                    <div>
-                                        <div className="text-blue-400 font-mono text-sm mb-2 font-bold tracking-widest uppercase">{hack.date}</div>
-                                        <h3 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight drop-shadow-lg">
-                                            {hack.title}
-                                        </h3>
-                                        <p className="text-gray-300 text-lg leading-relaxed italic border-l-4 border-blue-500 pl-6 py-2 mb-6">
-                                            "{hack.experience}"
-                                        </p>
+                                    {/* Right Divider */}
+                                    <div className="hidden lg:block w-[1px] bg-white/5 flex-shrink-0" />
 
-                                        <div className="flex gap-4">
-                                            <a
-                                                href={hack.githubUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-sm font-bold text-white transition-all hover:border-blue-500/50"
-                                            >
-                                                <Github size={18} className="text-blue-400" /> GitHub Code
-                                            </a>
-                                            <a
-                                                href={hack.demoUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center gap-2 px-6 py-3 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 rounded-full text-sm font-bold text-blue-400 transition-all hover:border-blue-500"
-                                            >
-                                                <ExternalLink size={18} /> Live Demo
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div className="grid md:grid-cols-2 gap-8">
-                                        <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors">
-                                            <div className="flex items-center gap-3 mb-4">
-                                                <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
-                                                    <Code2 size={24} />
-                                                </div>
-                                                <h4 className="text-xl font-bold text-white">The Project</h4>
-                                            </div>
-                                            <p className="text-gray-400 text-sm leading-relaxed">
-                                                {hack.projectDescription}
+                                    {/* RIGHT: Technical Dashboard */}
+                                    <div className="lg:flex-1 p-6 lg:p-8 flex flex-col gap-5 overflow-y-auto">
+                                        {/* Badge + Title */}
+                                        <div className="space-y-2">
+                                            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-[10px] font-bold uppercase tracking-widest">
+                                                <Trophy size={10} /> {hack.badge}
+                                            </span>
+                                            <h3 className="text-2xl lg:text-3xl font-black text-white">{hack.title}</h3>
+                                            <p className="text-gray-400 text-sm">
+                                                <span className="text-white font-semibold">Project:</span> {hack.project}
                                             </p>
                                         </div>
 
-                                        <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors">
-                                            <div className="flex items-center gap-3 mb-4">
-                                                <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400">
-                                                    <Lightbulb size={24} />
-                                                </div>
-                                                <h4 className="text-xl font-bold text-white">Achievements</h4>
+                                        {/* Metadata Row */}
+                                        <div className="flex flex-wrap gap-4 text-xs text-gray-400">
+                                            <span className="flex items-center gap-1.5"><Calendar size={12} className="text-blue-400" />{hack.year}</span>
+                                            <span className="flex items-center gap-1.5"><MapPin size={12} className="text-blue-400" />{hack.venue}</span>
+                                            <span className="flex items-center gap-1.5"><Users2 size={12} className="text-blue-400" />{hack.team}</span>
+                                        </div>
+
+                                        {/* Descriptions */}
+                                        <div className="space-y-2 text-gray-300 text-sm leading-relaxed">
+                                            <p>{hack.description1}</p>
+                                            <p>{hack.description2}</p>
+                                        </div>
+
+                                        {/* Contribution & Impact */}
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <div className="bg-white/[0.03] border border-white/8 rounded-2xl p-4 space-y-2">
+                                                <p className="text-[10px] font-black text-white uppercase tracking-widest">Contribution</p>
+                                                <p className="text-gray-400 text-xs leading-relaxed">{hack.contribution}</p>
                                             </div>
-                                            <ul className="space-y-2">
-                                                {hack.achievements.map((item, idx) => (
-                                                    <li key={idx} className="flex items-center gap-2 text-gray-400 text-sm">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                                                        {item}
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                            <div className="bg-white/[0.03] border border-white/8 rounded-2xl p-4 space-y-2">
+                                                <p className="text-[10px] font-black text-white uppercase tracking-widest">Impact</p>
+                                                <p className="text-gray-400 text-xs leading-relaxed">{hack.impact}</p>
+                                            </div>
+                                        </div>
+
+                                        {/* Highlights + Tech Stack */}
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div className="space-y-2">
+                                                <p className="text-[10px] font-black text-white uppercase tracking-widest">Highlights</p>
+                                                <ul className="space-y-1.5">
+                                                    {hack.highlights.map((item, i) => (
+                                                        <li key={i} className="flex items-start gap-2 text-gray-400 text-xs">
+                                                            <CheckCircle2 size={13} className="text-green-400 mt-0.5 flex-shrink-0" />
+                                                            {item}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <p className="text-[10px] font-black text-white uppercase tracking-widest">Tech Stack Used</p>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {hack.techStack.map((tech, i) => (
+                                                        <span key={i} className="flex items-center gap-1.5 px-2.5 py-1 bg-white/5 border border-white/10 rounded-lg text-[10px] font-bold text-gray-300">
+                                                            <Code2 size={10} className="text-blue-400" />{tech}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -133,4 +164,3 @@ const Hackathons = () => {
 };
 
 export default Hackathons;
-

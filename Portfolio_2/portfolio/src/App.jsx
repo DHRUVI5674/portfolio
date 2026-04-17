@@ -12,6 +12,7 @@ import Education from './sections/Education';
 import LeetCode from './sections/LeetCode';
 import Skills from './sections/Skills';
 import Contact from './sections/Contact';
+import Profiles from './sections/Profiles';
 import SplashScreen from './components/SplashScreen';
 
 // All sections in order — ids must match the `id` on each <section>
@@ -114,6 +115,7 @@ function App() {
           <Education />
           <LeetCode />
           <Contact />
+          <Profiles />
         </main>
 
         <Footer />

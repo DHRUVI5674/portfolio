@@ -1,14 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import SectionTitle from '../components/SectionTitle';
-import Card from '../components/Card';
-import { Trophy, Flame, Target, Zap, ExternalLink, Code2, TrendingUp } from 'lucide-react';
+import { Trophy, Activity, ExternalLink, RefreshCw, ChevronRight } from 'lucide-react';
 
 const LeetCode = () => {
-    const [data, setData] = useState(null);
+    const [stats, setStats] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [handle] = useState('TR0kHGhQN9');
 
-    const fallbackData = {
+    const fetchLeetData = useCallback(async () => {
+        setLoading(true);
+        try {
+            // Fetch Stats
+            const statsRes = await fetch(`https://leetcode-stats-api.herokuapp.com/${handle}`);
+            const statsData = await statsRes.json();
+            
+            if (statsData.status === 'success') {
+                setStats(statsData);
+            }
+        } catch (err) {
+            console.error("Error fetching LeetCode data:", err);
+        } finally {
+            setLoading(false);
+        }
+    }, [handle]);
+
+    useEffect(() => {
+        fetchLeetData();
+    }, [fetchLeetData]);
+
+    const displayStats = stats || {
         totalSolved: 122,
         easySolved: 112,
         mediumSolved: 10,
@@ -18,120 +39,109 @@ const LeetCode = () => {
         totalMedium: 1746,
         totalHard: 742,
         ranking: 1262465,
-        acceptanceRate: 65.4,
-        contributionPoints: 0,
-        submissionCalendar: {}
+        acceptanceRate: 65.4
     };
 
-    useEffect(() => {
-        const fetchStats = async () => {
-            try {
-                const response = await fetch('https://leetcode-stats-api.herokuapp.com/TR0kHGhQN9');
-                const result = await response.json();
-                setData(result.status === 'success' ? result : fallbackData);
-            } catch (err) {
-                setData(fallbackData);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchStats();
-    }, []);
-
-    const stats = data || fallbackData;
-
     return (
-        <section id="leetcode" className="py-24 relative overflow-hidden bg-black/60">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none" />
+        <section id="leetcode" className="py-24 relative overflow-hidden bg-[#050505]">
+            {/* Ambient Background Accents */}
+            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="max-w-7xl mx-auto px-6 relative z-10 font-sans">
                 <SectionTitle 
                     title="LeetCode Profile" 
-                    subtitle="Algorithmic milestones and daily consistency" 
+                    subtitle="Algorithmic milestones and problem-solving journey" 
                 />
 
-                <div className="space-y-8">
-                    {/* Main Card (Matching Reference Image) */}
-                    <Card className="bg-[#1a1a1a] border-white/5 p-8 md:p-12 shadow-2xl relative overflow-hidden">
-                        <div className="flex flex-wrap justify-between items-start mb-12 gap-4">
-                            <div>
-                                <h3 className="text-2xl font-bold text-gray-300 tracking-tight">TR0kHGhQN9</h3>
-                                <p className="text-blue-500 font-mono text-sm mt-1">#Rank {stats.ranking.toLocaleString()}</p>
+                <div className="space-y-12">
+                    
+                    {/* Top Stats Grid - Moderate Typography */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <StatBox label="Total Solved" value={displayStats.totalSolved} borderColor="border-blue-500/20" />
+                        <StatBox label="Easy" value={displayStats.easySolved} color="text-green-400" borderColor="border-green-500/20" />
+                        <StatBox label="Medium" value={displayStats.mediumSolved} color="text-yellow-400" borderColor="border-yellow-500/20" />
+                        <StatBox label="Hard" value={displayStats.hardSolved} color="text-red-400" borderColor="border-red-500/20" />
+                    </div>
+
+                    {/* Main Analytics Card - Glass Design */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="relative bg-gradient-to-br from-white/[0.03] to-transparent backdrop-blur-md border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-2xl"
+                    >
+                        <div className="flex flex-wrap justify-between items-center mb-12 gap-6">
+                            <div className="flex items-center gap-5">
+                                <div className="p-4 bg-blue-600/10 rounded-2xl border border-blue-500/20">
+                                    <Trophy className="text-blue-500" size={28} />
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">{handle}</h3>
+                                    <p className="text-gray-400 font-medium text-sm mt-0.5 flex items-center gap-2">
+                                        <Activity size={14} className="text-blue-500" /> 
+                                        Rank: #{displayStats.ranking.toLocaleString()}
+                                    </p>
+                                </div>
                             </div>
-                            <div className="px-4 py-1.5 bg-white/5 rounded-full border border-white/10 text-gray-400 text-xs font-bold">
-                                {stats.acceptanceRate}% Acceptance
-                            </div>
+                            
+                            <button 
+                                onClick={fetchLeetData}
+                                disabled={loading}
+                                className="px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl transition-all border border-white/10 flex items-center gap-2 active:scale-95 disabled:opacity-50"
+                            >
+                                <RefreshCw className={`${loading ? 'animate-spin' : ''}`} size={18} />
+                                <span>Sync Stats</span>
+                            </button>
                         </div>
 
                         <div className="grid lg:grid-cols-12 gap-12 items-center">
-                            {/* Left: Circular Chart */}
-                            <div className="lg:col-span-5 flex justify-center">
+                            {/* Circular Visualization - Scaled Down */}
+                            <div className="lg:col-span-12 xl:col-span-5 flex justify-center">
                                 <div className="relative w-64 h-64">
                                     <svg className="w-full h-full transform -rotate-90">
-                                        <circle cx="128" cy="128" r="110" stroke="#2d2d2d" strokeWidth="12" fill="transparent" />
+                                        <circle cx="128" cy="128" r="110" stroke="#141418" strokeWidth="14" fill="transparent" />
                                         <motion.circle
-                                            cx="128" cy="128" r="110" stroke="#f0ad43" strokeWidth="12" fill="transparent"
+                                            cx="128" cy="128" r="110" stroke="#3b82f6" strokeWidth="14" fill="transparent"
                                             strokeDasharray={2 * Math.PI * 110}
                                             initial={{ strokeDashoffset: 2 * Math.PI * 110 }}
-                                            animate={{ strokeDashoffset: 2 * Math.PI * 110 * (1 - stats.totalSolved / stats.totalQuestions) }}
-                                            transition={{ duration: 2 }}
+                                            animate={{ strokeDashoffset: 2 * Math.PI * 110 * (1 - displayStats.totalSolved / displayStats.totalQuestions) }}
+                                            transition={{ duration: 2, ease: "circOut" }}
                                             strokeLinecap="round"
                                         />
                                     </svg>
                                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                        <span className="text-6xl font-black text-white">{stats.totalSolved}</span>
-                                        <span className="text-gray-500 text-lg font-bold uppercase tracking-widest">Solved</span>
+                                        <span className="text-6xl font-black text-white">{displayStats.totalSolved}</span>
+                                        <span className="text-gray-500 text-xs font-bold tracking-[0.2em] mt-1">SOLVED</span>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Right: Difficulty Bars */}
-                            <div className="lg:col-span-7 space-y-10">
-                                <RefinedDifficultyBar label="Easy" solved={stats.easySolved} total={stats.totalEasy} color="text-green-500" barColor="bg-green-500" />
-                                <RefinedDifficultyBar label="Medium" solved={stats.mediumSolved} total={stats.totalMedium} color="text-yellow-500" barColor="bg-yellow-500" />
-                                <RefinedDifficultyBar label="Hard" solved={stats.hardSolved} total={stats.totalHard} color="text-red-500" barColor="bg-red-500" />
-                            </div>
-                        </div>
-                    </Card>
-
-                    {/* Streak Boxes (Contribution Grid) */}
-                    <Card className="bg-[#1a1a1a] border-white/5 p-8 shadow-2xl">
-                        <div className="flex justify-between items-center mb-6">
-                            <h4 className="text-sm font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                                <Flame size={16} className="text-orange-500" /> Submission Activity
-                            </h4>
-                            <div className="flex gap-2 items-center">
-                                <span className="text-[10px] text-gray-500 uppercase font-bold">Less</span>
-                                <div className="flex gap-1">
-                                    <div className="w-3 h-3 bg-[#2d2d2d] rounded-[2px]" />
-                                    <div className="w-3 h-3 bg-green-900 rounded-[2px]" />
-                                    <div className="w-3 h-3 bg-green-700 rounded-[2px]" />
-                                    <div className="w-3 h-3 bg-green-500 rounded-[2px]" />
-                                    <div className="w-3 h-3 bg-green-300 rounded-[2px]" />
+                            {/* Difficulty Breakdown */}
+                            <div className="lg:col-span-12 xl:col-span-7 space-y-10">
+                                <DifficultyBar label="Easy" solved={displayStats.easySolved} total={displayStats.totalEasy} color="text-green-400" barColor="bg-green-500" />
+                                <DifficultyBar label="Medium" solved={displayStats.mediumSolved} total={displayStats.totalMedium} color="text-yellow-400" barColor="bg-yellow-500" />
+                                <DifficultyBar label="Hard" solved={displayStats.hardSolved} total={displayStats.totalHard} color="text-red-400" barColor="bg-red-500" />
+                                
+                                <div className="pt-8 border-t border-white/5 flex flex-wrap justify-between items-center gap-4 text-sm">
+                                    <span className="text-gray-400">Acceptance Rate: <span className="text-white font-bold">{displayStats.acceptanceRate}%</span></span>
+                                    <a href={`https://leetcode.com/u/${handle}/`} target="_blank" rel="noopener noreferrer" className="text-blue-400 font-medium hover:underline flex items-center gap-1.5">
+                                        Profile Overview <ChevronRight size={14} />
+                                    </a>
                                 </div>
-                                <span className="text-[10px] text-gray-500 uppercase font-bold">More</span>
                             </div>
                         </div>
-                        
-                        <div className="overflow-x-auto pb-4 scrollbar-hide">
-                            <ContributionGrid calendar={stats.submissionCalendar} />
-                        </div>
-                        
-                        <div className="flex flex-wrap gap-8 mt-6 pt-6 border-t border-white/5">
-                            <MiniInsight icon={<Zap size={16} />} label="Total Active Days" value="283 Days" />
-                            <MiniInsight icon={<TrendingUp size={16} />} label="Max Streak" value="44 Days" />
-                            <MiniInsight icon={<Target size={16} />} label="Contribution Points" value={stats.contributionPoints} />
-                        </div>
-                    </Card>
+                    </motion.div>
 
-                    <div className="flex justify-center pt-8">
-                        <a 
-                            href="https://leetcode.com/u/TR0kHGhQN9/" 
+                    <div className="flex justify-center pt-6">
+                        <motion.a 
+                            whileHover={{ y: -3, scale: 1.05 }}
+                            href={`https://leetcode.com/u/${handle}/`}
                             target="_blank" rel="noopener noreferrer"
-                            className="flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-2xl text-white font-bold transition-all shadow-xl hover:scale-105 active:scale-95"
+                            className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-[0_10px_30px_rgba(37,99,235,0.2)] flex items-center gap-2 active:scale-95"
                         >
-                            View Source Profile <ExternalLink size={18} />
-                        </a>
+                            Explore All Submissions <ExternalLink size={16} />
+                        </motion.a>
                     </div>
                 </div>
             </div>
@@ -139,91 +149,34 @@ const LeetCode = () => {
     );
 };
 
-const RefinedDifficultyBar = ({ label, solved, total, color, barColor }) => (
-    <div className="space-y-3">
+const StatBox = ({ label, value, color = "text-white", borderColor }) => (
+    <div className={`p-6 bg-white/[0.02] border ${borderColor} rounded-2xl hover:bg-white/[0.04] transition-all`}>
+        <p className="text-gray-500 text-[11px] font-bold uppercase tracking-wider mb-2">{label}</p>
+        <p className={`text-3xl font-bold ${color} tracking-tight`}>{value}</p>
+    </div>
+);
+
+const DifficultyBar = ({ label, solved, total, color, barColor }) => (
+    <div className="space-y-3 px-1">
         <div className="flex justify-between items-end">
-            <span className="text-lg font-bold text-gray-400">{label}</span>
-            <div className="flex items-baseline gap-1">
-                <span className={`text-2xl font-black ${color}`}>{solved}</span>
-                <span className="text-gray-600 font-bold text-sm">/{total}</span>
+            <span className={`text-sm font-bold ${color} uppercase tracking-wider`}>{label}</span>
+            <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-bold text-white">{solved}</span>
+                <span className="text-gray-500 font-medium text-sm">/ {total}</span>
             </div>
         </div>
-        <div className="h-2 w-full bg-[#2d2d2d] rounded-full overflow-hidden">
+        <div className="h-2.5 w-full bg-white/5 rounded-full overflow-hidden p-[2px] border border-white/5">
             <motion.div 
-                className={`h-full ${barColor}`} 
+                className={`h-full ${barColor} rounded-full`} 
                 initial={{ width: 0 }} 
-                animate={{ width: `${(solved/total)*100}%` }}
-                transition={{ duration: 1.5 }}
+                whileInView={{ width: `${(solved/total)*100}%` }}
+                transition={{ duration: 1.5, ease: "circOut" }}
             />
         </div>
     </div>
 );
 
-const ContributionGrid = ({ calendar }) => {
-    // Generate dates for the last year (53 weeks to ensure full coverage)
-    const weeks = 53;
-    const daysPerWeek = 7;
-    const totalDays = weeks * daysPerWeek;
-    
-    const boxes = [];
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); // Normalize today to midnight
-    
-    // Predigest calendar into a Map for O(1) matching
-    const calendarMap = new Map();
-    Object.entries(calendar).forEach(([timestamp, count]) => {
-        const d = new Date(parseInt(timestamp) * 1000);
-        d.setHours(0, 0, 0, 0);
-        calendarMap.set(d.getTime(), count);
-    });
-    
-    for (let i = totalDays - 1; i >= 0; i--) {
-        const date = new Date(today);
-        date.setDate(today.getDate() - i);
-        date.setHours(0, 0, 0, 0);
-        
-        const count = calendarMap.get(date.getTime()) || 0;
-        boxes.push({ count, date });
-    }
-
-    return (
-        <div 
-            className="grid grid-flow-col gap-[3px] min-w-[800px]"
-            style={{ 
-                gridTemplateColumns: `repeat(${weeks}, 1fr)`,
-                gridTemplateRows: `repeat(${daysPerWeek}, 1fr)` 
-            }}
-        >
-            {boxes.map((box, i) => (
-                <div 
-                    key={i}
-                    className={`w-3 h-3 rounded-[2px] transition-colors cursor-help hover:ring-2 hover:ring-white/40 relative group`}
-                    style={{ 
-                        backgroundColor: box.count === 0 ? '#262626' : 
-                                         box.count < 3 ? '#166534' : // Dark green
-                                         box.count < 6 ? '#15803d' : // Mid green
-                                         box.count < 9 ? '#16a34a' : // Vibrant green
-                                         '#22c55e' // Bright neon green
-                    }}
-                >
-                    {/* Tooltip on hover */}
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-[10px] text-white rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 transition-opacity border border-white/10">
-                        {box.date.toDateString()}: {box.count} submissions
-                    </div>
-                </div>
-            ))}
-        </div>
-    );
-};
-
-const MiniInsight = ({ icon, label, value }) => (
-    <div className="flex items-center gap-3">
-        <div className="text-blue-500">{icon}</div>
-        <div>
-            <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{label}</p>
-            <p className="text-white font-bold">{value}</p>
-        </div>
-    </div>
-);
-
 export default LeetCode;
+
+
+
