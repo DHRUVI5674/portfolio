@@ -6,16 +6,16 @@ import Background from './components/Background';
 import SplashScreen from './components/SplashScreen';
 
 import Hero from './sections/Hero';
-import About from './sections/About';
-import Resume from './sections/Resume';
-import Skills from './sections/Skills';
-import Projects from './sections/Projects';
-import Certificates from './sections/Certificates';
-import Hackathons from './sections/Hackathons';
-import Education from './sections/Education';
-import LeetCode from './sections/LeetCode';
-import Contact from './sections/Contact';
-import Profiles from './sections/Profiles';
+const About = lazy(() => import('./sections/About'));
+const Resume = lazy(() => import('./sections/Resume'));
+const Skills = lazy(() => import('./sections/Skills'));
+const Projects = lazy(() => import('./sections/Projects'));
+const Certificates = lazy(() => import('./sections/Certificates'));
+const Hackathons = lazy(() => import('./sections/Hackathons'));
+const Education = lazy(() => import('./sections/Education'));
+const LeetCode = lazy(() => import('./sections/LeetCode'));
+const Contact = lazy(() => import('./sections/Contact'));
+const Profiles = lazy(() => import('./sections/Profiles'));
 
 // All sections in order — ids must match the `id` on each <section>
 const SECTION_IDS = ['hero', 'about', 'resume', 'skills', 'projects', 'certificates', 'hackathons', 'education', 'leetcode', 'contact'];
@@ -109,16 +109,18 @@ function App() {
         {/* Single-page layout — all sections visible; URL hash updates on scroll */}
         <main>
             <Hero />
-            <About />
-            <Resume />
-            <Skills />
-            <Projects />
-            <Certificates />
-            <Hackathons />
-            <Education />
-            <LeetCode />
-            <Contact />
-            <Profiles />
+            <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center"><div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" /></div>}>
+              <About />
+              <Resume />
+              <Skills />
+              <Projects />
+              <Certificates />
+              <Hackathons />
+              <Education />
+              <LeetCode />
+              <Contact />
+              <Profiles />
+            </Suspense>
         </main>
 
         <Footer />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Heart, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
@@ -61,4 +61,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default memo(Footer);

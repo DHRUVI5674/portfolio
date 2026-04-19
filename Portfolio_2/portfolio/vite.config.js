@@ -7,12 +7,14 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'framer-motion': ['framer-motion'],
-          'react-icons': ['react-icons'],
-          'emailjs': ['@emailjs/browser'],
-          'lucide': ['lucide-react'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('framer-motion')) return 'framer-motion';
+            if (id.includes('lucide-react')) return 'lucide';
+            if (id.includes('react')) return 'react-vendor';
+            if (id.includes('@emailjs')) return 'emailjs';
+            return 'vendor';
+          }
         },
       },
     },
