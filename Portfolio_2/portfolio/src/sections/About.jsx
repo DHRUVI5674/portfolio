@@ -2,7 +2,6 @@ import React from 'react';
 import SectionTitle from '../components/SectionTitle';
 import { Terminal, Cpu, Zap, Trophy, Shield, Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
 
 const About = () => {
     const highlights = [
@@ -14,10 +13,6 @@ const About = () => {
 
     return (
         <section id="about" className="py-16 relative overflow-hidden">
-            <Helmet>
-                <title>About Me | Dhruvi Patel</title>
-                <meta name="description" content="Learn more about Dhruvi Patel, a Full-Stack Developer and CSE student specializing in the MERN Stack." />
-            </Helmet>
             
             {/* Background Glows */}
             <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
