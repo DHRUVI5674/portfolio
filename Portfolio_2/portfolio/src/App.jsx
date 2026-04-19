@@ -95,12 +95,12 @@ function ScrollSpy() {
 function App() {
   const [loading, setLoading] = useState(true);
 
-  if (loading) {
-    return <SplashScreen onComplete={() => setLoading(false)} />;
-  }
-
   return (
-    <Router>
+    <>
+      {loading && <SplashScreen onComplete={() => setLoading(false)} />}
+      
+      <div className={loading ? 'fixed inset-0 opacity-0 pointer-events-none' : 'opacity-100 transition-opacity duration-1000'}>
+        <Router>
       <Background />
       <div className="relative z-10 font-sans text-gray-200 selection:bg-neon-cyan selection:text-black overflow-x-hidden">
         <Navbar />
@@ -124,6 +124,8 @@ function App() {
         <Footer />
       </div>
     </Router>
+      </div>
+    </>
   );
 }
 
