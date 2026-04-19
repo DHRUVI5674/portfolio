@@ -62,6 +62,7 @@ const Hackathons = () => {
                                                 src={hack.image}
                                                 alt={hack.title}
                                                 className="w-full h-full object-cover"
+                                                loading="lazy"
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117]/90 via-transparent to-transparent" />
                                         </div>

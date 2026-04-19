@@ -175,6 +175,7 @@ const Projects = () => {
                                                 title={project.title}
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                 allowFullScreen
+                                                loading="lazy"
                                             ></iframe>
                                         )}
                                         {project.imageUrl && (
@@ -182,6 +183,7 @@ const Projects = () => {
                                                 src={project.imageUrl}
                                                 alt={project.title}
                                                 className="w-full h-full object-cover"
+                                                loading="lazy"
                                             />
                                         )}
                                         {project.previewImage && (
@@ -189,6 +191,7 @@ const Projects = () => {
                                                 src={project.previewImage}
                                                 alt={project.title}
                                                 className="w-full h-full object-cover"
+                                                loading="lazy"
                                             />
                                         )}
                                     </div>
