@@ -32,18 +32,23 @@ const Navbar = () => {
     setIsOpen(false);
     // Update URL with a clean path (e.g. /about) instead of a hash
     const newPath = id === 'hero' ? '/' : '/' + id;
-    history.pushState(null, '', newPath);
+    window.history.pushState(null, '', newPath);
     // Notify ScrollSpy to pause briefly
     window.dispatchEvent(new CustomEvent('navclick', { detail: id }));
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    
+    // Defer the scroll action so that state changes (like mobile menu closing)
+    // don't interrupt the browser's scrollIntoView calculation.
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 50);
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md py-4' : 'bg-transparent py-6'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${(scrolled || isOpen) ? 'bg-black/90 backdrop-blur-md py-3 sm:py-4 shadow-xl' : 'bg-transparent py-4 sm:py-6'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
         {/* Left: Brand — click to scroll to top */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -73,8 +78,13 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-white p-2 hover:bg-white/5 rounded-lg transition-colors" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X /> : <Menu />}
+          <button 
+            className="md:hidden text-white p-2 hover:bg-white/5 rounded-lg transition-colors" 
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle Navigation Menu"
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
         </div>
       </div>
@@ -86,7 +96,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10"
+            className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 overflow-hidden"
           >
             <div className="flex flex-col items-center py-8 space-y-6">
               {navLinks.map((link) => (

@@ -132,16 +132,16 @@ const Projects = () => {
 
     return (
         <section id="projects" className="py-24 relative bg-black/40">
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 <SectionTitle title="My Projects" subtitle="Compact view of my work" />
 
                 {/* Category Filter Buttons */}
-                <div className="flex flex-wrap gap-3 justify-center mb-12">
+                <div className="flex flex-wrap flex-row gap-2 md:gap-3 justify-center mb-12">
                     {CATEGORIES.map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setActiveCategory(cat)}
-                            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 border ${
+                            className={`px-3 py-1.5 md:px-5 md:py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300 border ${
                                 activeCategory === cat
                                     ? 'bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-600/20'
                                     : 'bg-white/5 text-gray-400 border-white/10 hover:border-blue-500/40 hover:text-white'
@@ -215,7 +215,7 @@ const Projects = () => {
                                         </div>
                                     </div>
 
-                                    <div className="pt-4 border-t border-white/5">
+                                    <div className="pt-4 border-t border-white/5 mt-auto">
                                         {project.figmaLink ? (
                                             <a
                                                 href={project.figmaLink}
@@ -232,11 +232,11 @@ const Projects = () => {
                                                 View in Figma
                                             </a>
                                         ) : (
-                                            <div className="flex justify-between items-center">
-                                                <a href={project.projectUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-xs text-gray-400 hover:text-white transition-colors">
+                                            <div className="flex justify-between items-center px-1">
+                                                <a href={project.projectUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-[11px] md:text-xs text-gray-400 hover:text-white transition-colors">
                                                     <Github size={14} className="mr-1" /> Code
                                                 </a>
-                                                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-xs text-neon-cyan hover:text-white transition-colors">
+                                                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-[11px] md:text-xs text-neon-cyan hover:text-white transition-colors">
                                                     <ExternalLink size={14} className="mr-1" /> Demo
                                                 </a>
                                             </div>

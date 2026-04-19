@@ -140,13 +140,13 @@ const Contact = () => {
 
                         <form
                             ref={formRef}
-                            className="relative space-y-6 backdrop-blur-2xl bg-black/40 p-10 rounded-3xl border border-white/10 shadow-2xl"
+                            className="relative space-y-5 backdrop-blur-2xl bg-black/40 p-6 sm:p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl"
                             onSubmit={handleSubmit}
                         >
                             <h3 className="text-2xl font-bold text-white mb-2">Send Message</h3>
                             <p className="text-gray-400 text-sm mb-8">Have a specific inquiry or just want to say hi? I'll get back to you as soon as possible.</p>
 
-                            <div className="grid md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                                 <div className="space-y-2">
                                     <label className="text-xs font-semibold text-gray-400 uppercase tracking-widest ml-1">Your Name</label>
                                     <input

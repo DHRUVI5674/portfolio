@@ -138,28 +138,29 @@ const Certificates = () => {
 
     return (
         <section id="certificates" className="py-24 relative overflow-hidden bg-[#050505]">
+            {/* Background Glows */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[100px] -ml-48 -mb-48 pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <SectionTitle
-                    title="Certifications"
-                    subtitle="Validating my expertise through rigorous training and milestones"
-                />
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+                
+                <div className="hidden">
+                    <SectionTitle
+                        title="Certifications"
+                        subtitle="Validating my expertise through rigorous training and milestones"
+                    />
+                </div>
 
                 {/* Toggle View */}
-                <div className="flex justify-center mb-12">
+                <div className="flex justify-center mb-10 sm:mb-12">
                     <button
                         onClick={() => setShowAll(!showAll)}
-                        className={`flex items-center gap-2.5 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest border transition-all duration-300 ${showAll
-                            ? 'bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-600/20'
-                            : 'bg-white/5 text-gray-400 border-white/10 hover:border-blue-500/40 hover:text-white'
-                            }`}
+                        className="flex items-center gap-2 px-6 py-2.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest border transition-all duration-300 bg-white/[0.03] text-gray-400 border-white/[0.08] hover:bg-white/[0.08] hover:text-white hover:border-white/20"
                     >
                         {showAll ? (
-                            <><SlidersHorizontal size={14} /> Switch to Slider</>
+                            <><SlidersHorizontal size={14} /> SWITCH TO SLIDER</>
                         ) : (
-                            <><LayoutGrid size={14} /> View All Grid</>
+                            <><LayoutGrid size={14} /> VIEW ALL GRID</>
                         )}
                     </button>
                 </div>
@@ -171,7 +172,7 @@ const Certificates = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
-                            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
                         >
                             {certificates.map((cert, index) => (
                                 <CertificateCard key={index} cert={cert} />
@@ -187,24 +188,23 @@ const Certificates = () => {
                         >
                             <button
                                 onClick={() => scroll('left')}
-                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 p-3 bg-[#0d1117]/90 border border-white/10 rounded-full text-white opacity-0 group-hover/slider:opacity-100 group-hover/slider:translate-x-0 transition-all hover:bg-blue-600 shadow-xl"
+                                className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2.5 sm:p-3 bg-[#11151c]/90 border border-white/5 rounded-full text-white opacity-0 group-hover/slider:opacity-100 -translate-x-4 group-hover/slider:translate-x-0 transition-all hover:bg-white/10 shadow-xl hidden md:block"
                             >
                                 <ChevronLeft size={20} />
                             </button>
                             <button
                                 onClick={() => scroll('right')}
-                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 p-3 bg-[#0d1117]/90 border border-white/10 rounded-full text-white opacity-0 group-hover/slider:opacity-100 group-hover/slider:translate-x-0 transition-all hover:bg-blue-600 shadow-xl"
+                                className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2.5 sm:p-3 bg-[#11151c]/90 border border-white/5 rounded-full text-white opacity-0 group-hover/slider:opacity-100 translate-x-4 group-hover/slider:translate-x-0 transition-all hover:bg-white/10 shadow-xl hidden md:block"
                             >
                                 <ChevronRight size={20} />
                             </button>
 
                             <div
                                 ref={scrollRef}
-                                className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory px-2"
-                                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                                className="flex gap-4 md:gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide px-1"
                             >
                                 {certificates.map((cert, index) => (
-                                    <div key={index} className="min-w-full md:min-w-[45%] lg:min-w-[32%] snap-center">
+                                    <div key={index} className="w-[85vw] sm:w-[45vw] lg:w-[calc(33.333%-1rem)] snap-center flex-shrink-0">
                                         <CertificateCard cert={cert} />
                                     </div>
                                 ))}
@@ -222,17 +222,15 @@ const CertificateCard = ({ cert }) => (
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="group relative h-full flex flex-col bg-[#0d1117] rounded-[1.5rem] border border-white/5 hover:border-blue-500/30 transition-all duration-500 overflow-hidden shadow-xl hover:shadow-blue-500/10"
+        className="group relative h-full flex flex-col bg-[#11151c] rounded-[1.25rem] border border-white/5 hover:border-white/10 transition-all duration-300 overflow-hidden shadow-lg"
     >
-        {/* Top glow on hover */}
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
         {/* Certificate Image - Full View */}
-        <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#0a0e14] flex items-center justify-center p-3">
+        <div className="relative w-full aspect-[1.4] overflow-hidden p-4 sm:p-5 flex items-center justify-center">
             <img
                 src={cert.image}
                 alt={cert.title}
-                className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-contain rounded-lg"
+                loading="lazy"
                 onError={(e) => {
                     e.target.onerror = null; // prevents infinite loop
                     e.target.src = '';
@@ -242,38 +240,39 @@ const CertificateCard = ({ cert }) => (
         </div>
 
         {/* Content - Expanded */}
-        <div className="flex flex-col flex-grow p-5 gap-4">
+        <div className="flex flex-col flex-grow px-5 pb-5 pt-1 gap-4">
             {/* Issuer + Date badges */}
-            <div className="flex items-center gap-2 flex-wrap">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-500/10 rounded-full border border-blue-500/20 text-[10px] font-bold uppercase tracking-wider text-blue-400">
-                    <Award size={10} />
+            <div className="flex items-center gap-2.5 flex-wrap">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-[10px] font-bold uppercase tracking-wider text-blue-500">
+                    <Award size={12} />
                     {cert.issuer}
                 </span>
-                <span className="px-2.5 py-1 bg-white/5 rounded-full border border-white/10 text-[10px] font-bold text-gray-400">
+                <span className="px-2.5 py-1 bg-white/[0.04] border border-white/5 rounded-full text-[10px] font-bold text-gray-400">
                     {cert.date}
                 </span>
             </div>
 
-            <h3 className="text-base font-bold text-white leading-snug tracking-tight group-hover:text-blue-300 transition-colors duration-300">
+            <h3 className="text-base sm:text-lg font-bold text-white leading-snug tracking-tight">
                 {cert.title}
             </h3>
 
-            <p className="text-gray-400 text-sm leading-relaxed flex-grow">
+            <p className="text-gray-400 text-xs sm:text-sm leading-relaxed flex-grow line-clamp-3 mb-2">
                 {cert.description}
             </p>
 
             {/* View Certificate Button */}
             <button
                 onClick={() => window.open(cert.image, '_blank')}
-                className="mt-auto w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest border border-white/8 bg-white/[0.03] text-gray-300 hover:bg-blue-600 hover:border-blue-500 hover:text-white transition-all duration-300 group/btn"
+                className="mt-auto w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-widest border border-white/[0.04] bg-black/30 text-gray-300 hover:bg-white/[0.04] hover:text-white transition-all duration-300 group/btn"
             >
-                <Award size={13} className="text-blue-400 group-hover/btn:text-white transition-colors" />
-                View Certificate
-                <ArrowUpRight size={13} className="opacity-50 group-hover/btn:opacity-100 transition-all" />
+                <Award size={14} className="text-blue-500 opacity-80" />
+                VIEW CERTIFICATE
+                <ArrowUpRight size={14} className="opacity-50 group-hover/btn:opacity-100 transition-opacity" />
             </button>
         </div>
     </motion.div>
 );
 
 export default Certificates;
+
 

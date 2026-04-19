@@ -16,11 +16,12 @@ const Background = () => {
         handleResize();
         window.addEventListener('resize', handleResize);
 
-        // Configuration for "Very Light View"
-        const particles = [];
-        const particleCount = 50;
-        const connectionDistance = 150;
+        // Fewer particles on mobile to improve performance
+        const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth < 768;
+        const particleCount = isMobile ? 25 : 50;
+        const connectionDistance = isMobile ? 100 : 150;
         const mouseDistance = 200;
+        const particles = [];
 
         class Particle {
             constructor() {
@@ -54,11 +55,14 @@ const Background = () => {
         }
 
         let mouse = { x: null, y: null };
+        // Only track mouse on non-touch devices
         const handleMouseMove = (e) => {
             mouse.x = e.x;
             mouse.y = e.y;
         };
-        window.addEventListener('mousemove', handleMouseMove);
+        if (!isMobile) {
+            window.addEventListener('mousemove', handleMouseMove);
+        }
 
         const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -106,11 +110,15 @@ const Background = () => {
             animationFrameId = requestAnimationFrame(animate);
         };
 
-        animate();
+        // Defer particle animation start to prioritize initial page render & LCP
+        const timeoutId = setTimeout(() => {
+            animate();
+        }, 3000);
 
         return () => {
+            clearTimeout(timeoutId);
             window.removeEventListener('resize', handleResize);
-            window.removeEventListener('mousemove', handleMouseMove);
+            if (!isMobile) window.removeEventListener('mousemove', handleMouseMove);
             cancelAnimationFrame(animationFrameId);
         };
     }, []);

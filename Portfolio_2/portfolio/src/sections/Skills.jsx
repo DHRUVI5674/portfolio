@@ -30,7 +30,7 @@ const Skills = () => {
                             <Code size={32} className="text-neon-cyan mb-2" />
                             <span className="text-white font-bold text-sm">Full Stack</span>
                         </motion.div>
-                        {/* Vertical Line Down */}
+                    {/* Vertical Line Down */}
                         <motion.div
                             initial={{ height: 0 }}
                             whileInView={{ height: 64 }}
@@ -63,7 +63,7 @@ const Skills = () => {
                                 <div className="flex flex-col gap-6 relative items-center">
                                     <div className="absolute top-0 bottom-12 left-1/2 -translate-x-1/2 w-0.5 bg-slate-800" />
 
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-2 gap-3 sm:gap-4">
                                         <LeafNode icon={<SiReact size={32} />} text="React" color="text-cyan-400" index={0} />
                                         <LeafNode icon={<SiNextdotjs size={32} />} text="Next.js" color="text-white" index={1} />
                                         <LeafNode icon={<SiTailwindcss size={32} />} text="Tailwind" color="text-cyan-300" index={2} />
@@ -142,10 +142,12 @@ const LeafNode = ({ icon, text, color, index }) => (
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ delay: index * 0.1 }}
         whileHover={{ scale: 1.05, y: -5 }}
-        className="w-28 h-28 p-4 bg-white/5 border border-white/10 rounded-xl flex flex-col items-center justify-center gap-3 backdrop-blur-md hover:bg-white/10 hover:border-white/30 transition-all cursor-default z-10 shadow-lg group"
+        className="w-[5.5rem] h-[5.5rem] sm:w-28 sm:h-28 p-2 sm:p-4 bg-white/5 border border-white/10 rounded-xl flex flex-col items-center justify-center gap-2 sm:gap-3 backdrop-blur-md hover:bg-white/10 hover:border-white/30 transition-all cursor-default z-10 shadow-lg group"
     >
-        <span className={`${color} group-hover:scale-110 transition-transform duration-300`}>{icon}</span>
-        <span className="text-sm font-medium text-gray-300 group-hover:text-white">{text}</span>
+        <span className={`${color} group-hover:scale-110 transition-transform duration-300`}>
+            {React.cloneElement(icon, { size: 24 })}
+        </span>
+        <span className="text-[10px] sm:text-sm font-medium text-gray-300 group-hover:text-white text-center leading-tight">{text}</span>
     </motion.div>
 );
 

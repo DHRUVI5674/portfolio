@@ -23,7 +23,7 @@ const Profiles = () => {
                     subtitle="Stay updated with my latest projects and coding milestones" 
                 />
 
-                <div className="flex flex-wrap items-center justify-center gap-10 mt-16">
+                <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-10 mt-12 md:mt-16">
                     {socials.map((social, index) => (
                         <motion.div
                             key={index}

@@ -35,7 +35,7 @@ const Resume = () => {
                     className="relative w-full max-w-4xl p-[2px] rounded-3xl bg-gradient-to-br from-[#00c6ff]/40 via-purple-500/20 to-[#0072ff]/40 hover:from-[#00c6ff] hover:to-[#0072ff] overflow-hidden group transition-all duration-700 shadow-[0_0_30px_rgba(0,198,255,0.1)] hover:shadow-[0_0_50px_rgba(0,198,255,0.25)]"
                 >
                     {/* Actual Card Content */}
-                    <div className="relative rounded-[23px] bg-[#060b14] p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center backdrop-blur-3xl h-full w-full overflow-hidden">
+                    <div className="relative rounded-[23px] bg-[#060b14] p-5 sm:p-8 md:p-12 flex flex-col md:flex-row gap-6 md:gap-8 items-center backdrop-blur-3xl h-full w-full overflow-hidden">
                         
                         <div className="absolute top-0 right-0 w-96 h-96 bg-[#00c6ff]/5 blur-[150px] rounded-full pointer-events-none group-hover:bg-[#00c6ff]/10 transition-colors duration-700"></div>
 
@@ -45,8 +45,8 @@ const Resume = () => {
                             <FileText size={44} className="text-[#00c6ff] relative z-10" />
                         </div>
 
-                        <div className="flex-1 text-center md:text-left space-y-4 z-10">
-                            <h3 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-500">Dhruvi Patel</h3>
+                        <div className="flex-1 text-center md:text-left space-y-3 md:space-y-4 z-10">
+                            <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-500">Dhruvi Patel</h3>
                             <p className="text-gray-300 text-sm md:text-base leading-relaxed font-medium">
                                 A detailed insight into my technical abilities, robust project track record, and educational background. Experience the highest quality overview directly inside your browser.
                             </p>

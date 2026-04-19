@@ -1,20 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Footer from './components/Footer';
 import Background from './components/Background';
+import SplashScreen from './components/SplashScreen';
+
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Resume from './sections/Resume';
+import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Certificates from './sections/Certificates';
 import Hackathons from './sections/Hackathons';
 import Education from './sections/Education';
 import LeetCode from './sections/LeetCode';
-import Skills from './sections/Skills';
 import Contact from './sections/Contact';
 import Profiles from './sections/Profiles';
-import SplashScreen from './components/SplashScreen';
 
 // All sections in order — ids must match the `id` on each <section>
 const SECTION_IDS = ['hero', 'about', 'resume', 'skills', 'projects', 'certificates', 'hackathons', 'education', 'leetcode', 'contact'];
@@ -101,23 +102,23 @@ function App() {
   return (
     <Router>
       <Background />
-      <div className="relative z-10 font-sans text-gray-200 selection:bg-neon-cyan selection:text-black">
+      <div className="relative z-10 font-sans text-gray-200 selection:bg-neon-cyan selection:text-black overflow-x-hidden">
         <Navbar />
         <ScrollSpy />
 
         {/* Single-page layout — all sections visible; URL hash updates on scroll */}
         <main>
-          <Hero />
-          <About />
-          <Resume />
-          <Skills />
-          <Projects />
-          <Certificates />
-          <Hackathons />
-          <Education />
-          <LeetCode />
-          <Contact />
-          <Profiles />
+            <Hero />
+            <About />
+            <Resume />
+            <Skills />
+            <Projects />
+            <Certificates />
+            <Hackathons />
+            <Education />
+            <LeetCode />
+            <Contact />
+            <Profiles />
         </main>
 
         <Footer />

@@ -88,17 +88,17 @@ const LeetCode = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="relative bg-gradient-to-br from-white/[0.03] to-transparent backdrop-blur-md border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-2xl"
+                        className="relative bg-gradient-to-br from-white/[0.03] to-transparent backdrop-blur-md border border-white/10 p-5 sm:p-8 md:p-12 rounded-[2rem] shadow-2xl"
                     >
-                        <div className="flex flex-wrap justify-between items-center mb-12 gap-6">
-                            <div className="flex items-center gap-5">
-                                <div className="p-4 bg-blue-600/10 rounded-2xl border border-blue-500/20">
-                                    <Trophy className="text-blue-500" size={28} />
+                        <div className="flex flex-wrap justify-between items-center mb-8 md:mb-12 gap-4">
+                            <div className="flex items-center gap-4">
+                                <div className="p-3 md:p-4 bg-blue-600/10 rounded-2xl border border-blue-500/20">
+                                    <Trophy className="text-blue-500" size={24} />
                                 </div>
                                 <div>
-                                    <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">{handle}</h3>
-                                    <p className="text-gray-400 font-medium text-sm mt-0.5 flex items-center gap-2">
-                                        <Activity size={14} className="text-blue-500" /> 
+                                    <h3 className="text-xl md:text-3xl font-bold text-white tracking-tight">{handle}</h3>
+                                    <p className="text-gray-400 font-medium text-xs md:text-sm mt-0.5 flex items-center gap-2">
+                                        <Activity size={12} className="text-blue-500" /> 
                                         Rank: #{displayStats.ranking.toLocaleString()}
                                     </p>
                                 </div>
@@ -107,31 +107,31 @@ const LeetCode = () => {
                             <button 
                                 onClick={fetchLeetData}
                                 disabled={loading}
-                                className="px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl transition-all border border-white/10 flex items-center gap-2 active:scale-95 disabled:opacity-50"
+                                className="px-4 py-2.5 md:px-6 md:py-3 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl transition-all border border-white/10 flex items-center gap-2 active:scale-95 disabled:opacity-50 text-sm"
                             >
-                                <RefreshCw className={`${loading ? 'animate-spin' : ''}`} size={18} />
+                                <RefreshCw className={`${loading ? 'animate-spin' : ''}`} size={16} />
                                 <span>Sync Stats</span>
                             </button>
                         </div>
 
                         <div className="grid lg:grid-cols-12 gap-12 items-center">
-                            {/* Circular Visualization - Scaled Down */}
+                            {/* Circular Visualization */}
                             <div className="lg:col-span-12 xl:col-span-5 flex justify-center">
-                                <div className="relative w-64 h-64">
+                                <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
                                     <svg className="w-full h-full transform -rotate-90">
-                                        <circle cx="128" cy="128" r="110" stroke="#141418" strokeWidth="14" fill="transparent" />
+                                        <circle cx="50%" cy="50%" r="44%" stroke="#141418" strokeWidth="12" fill="transparent" />
                                         <motion.circle
-                                            cx="128" cy="128" r="110" stroke="#3b82f6" strokeWidth="14" fill="transparent"
-                                            strokeDasharray={2 * Math.PI * 110}
-                                            initial={{ strokeDashoffset: 2 * Math.PI * 110 }}
-                                            animate={{ strokeDashoffset: 2 * Math.PI * 110 * (1 - displayStats.totalSolved / displayStats.totalQuestions) }}
+                                            cx="50%" cy="50%" r="44%" stroke="#3b82f6" strokeWidth="12" fill="transparent"
+                                            strokeDasharray={`${2 * Math.PI * 44}`}
+                                            initial={{ strokeDashoffset: `${2 * Math.PI * 44}` }}
+                                            animate={{ strokeDashoffset: `${2 * Math.PI * 44 * (1 - displayStats.totalSolved / displayStats.totalQuestions)}` }}
                                             transition={{ duration: 2, ease: "circOut" }}
                                             strokeLinecap="round"
                                         />
                                     </svg>
                                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                        <span className="text-6xl font-black text-white">{displayStats.totalSolved}</span>
-                                        <span className="text-gray-500 text-xs font-bold tracking-[0.2em] mt-1">SOLVED</span>
+                                        <span className="text-4xl sm:text-5xl md:text-6xl font-black text-white">{displayStats.totalSolved}</span>
+                                        <span className="text-gray-500 text-[10px] font-bold tracking-[0.2em] mt-1">SOLVED</span>
                                     </div>
                                 </div>
                             </div>

@@ -51,11 +51,13 @@ const Education = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, margin: "-100px" }}
                                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                                className={`flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+                                className={`flex flex-col md:flex-row items-start md:items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
                             >
                                 {/* Content Side */}
-                                <div className="w-full md:w-1/2 mb-8 md:mb-0">
-                                    <div className={`p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-neon-cyan/50 transition-all duration-500 group relative ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'}`}>
+                                <div className="w-full md:w-1/2 mb-8 md:mb-0 relative">
+                                    {/* Mobile: left bullet node */}
+                                    <div className="md:hidden absolute -left-5 top-6 w-3 h-3 bg-slate-900 border-2 border-cyan-400 rounded-full shadow-[0_0_8px_rgba(0,243,255,0.5)]" />
+                                    <div className={`p-5 sm:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-neon-cyan/50 transition-all duration-500 group relative ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'}`}>
                                         <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-cyan to-purple-600 rounded-2xl blur opacity-0 group-hover:opacity-10 transition duration-500" />
                                         
                                         <div className="relative">
@@ -68,7 +70,7 @@ const Education = () => {
                                                 </span>
                                             </div>
 
-                                            <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-neon-cyan transition-colors">
+                                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-neon-cyan transition-colors">
                                                 {edu.degree}
                                             </h3>
 
@@ -88,7 +90,7 @@ const Education = () => {
                                     </div>
                                 </div>
 
-                                {/* Center Icon/Node */}
+                                {/* Center Node — desktop only */}
                                 <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-slate-900 border-4 border-neon-cyan rounded-full items-center justify-center z-20 shadow-[0_0_20px_rgba(0,243,255,0.3)]">
                                     {edu.icon}
                                 </div>

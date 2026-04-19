@@ -34,11 +34,11 @@ const Hero = () => {
     }, [displayText, isDeleting, roleIndex]);
 
     return (
-        <section id="hero" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+        <section id="hero" className="min-h-screen flex items-center justify-center pt-24 sm:pt-20 relative overflow-hidden">
             <Helmet>
-                <title>Dhruvi Patel | Full-Stack Developer Portfolio</title>
-                <meta name="description" content="Portfolio of Dhruvi Patel - A passionate Full-Stack Developer building futuristic web experiences." />
-                <meta name="keywords" content="Dhruvi Patel, Full-Stack Developer, MERN Stack, UI/UX Designer, Portfolio" />
+                <title>Dhruvi Patel | Software Engineer & Full-Stack Developer Portfolio</title>
+                <meta name="description" content="Portfolio of Dhruvi Patel - Software Engineer, Full-Stack Developer, and UI/UX Designer specializing in scalable, modern web applications." />
+                <meta name="keywords" content="Dhruvi Patel, Dhruvi Patel Portfolio, Full-Stack Developer, Software Engineer, React Developer, UI/UX Designer" />
                 
                 {/* Social Media Meta Tags */}
                 <meta property="og:title" content="Dhruvi Patel | Full-Stack Developer" />
@@ -48,7 +48,7 @@ const Hero = () => {
                 <meta name="twitter:title" content="Dhruvi Patel | Portfolio" />
                 <meta name="twitter:description" content="Building the future of web development." />
             </Helmet>
-            <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
 
                 {/* Left Content */}
                 <motion.div
@@ -66,7 +66,7 @@ const Hero = () => {
                             <motion.span
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="text-2xl md:text-3xl font-mono text-blue-400 mb-2"
+                                className="text-base sm:text-xl md:text-2xl lg:text-3xl font-mono text-blue-400 mb-1"
                             >
                                 Hello, I'm
                             </motion.span>
@@ -74,20 +74,20 @@ const Hero = () => {
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ type: "spring", bounce: 0.4, delay: 0.2 }}
-                                className="text-5xl md:text-8xl font-black text-white tracking-normal leading-none bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-500 drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                                className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-normal leading-none bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-500 drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]"
                             >
                                 Dhruvi Patel
                             </motion.span>
                         </h1>
                     </motion.div>
-                    <div className="h-10 md:h-12 mb-8">
-                        <h2 className="text-2xl md:text-4xl text-gray-300 flex items-center">
-                            <span className="text-blue-500 mr-2 font-mono">{'>'}</span>
+                    <div className="min-h-[2.5rem] md:min-h-[3rem] mb-6 md:mb-8">
+                        <h2 className="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-300 flex items-center flex-wrap gap-1">
+                            <span className="text-blue-500 mr-1 font-mono">{'>'}</span>
                             <span>I'm a {displayText}</span>
-                            <span className="w-1.5 h-10 bg-blue-500 ml-2 animate-bounce" />
+                            <span className="w-1 h-5 sm:h-7 md:h-10 bg-blue-500 ml-1 animate-bounce" />
                         </h2>
                     </div>
-                    <p className="text-blue-100/80 text-lg mb-10 max-w-lg leading-relaxed font-light drop-shadow-sm">
+                    <p className="text-blue-100/80 text-sm sm:text-base md:text-lg mb-8 md:mb-10 max-w-lg leading-relaxed font-light drop-shadow-sm">
                         Building high-performance, futuristic web applications with modern technologies.
                         Passionate about AI, Clean Architecture, and immersive user experiences.
                     </p>
@@ -101,23 +101,24 @@ const Hero = () => {
                         </Button>
                     </div>
 
-                    <div className="flex gap-6">
+                    <div className="flex flex-wrap gap-6 mt-8">
                         {[
-                            { Icon: Github, href: "https://github.com/DHRUVI5674" },
-                            { Icon: Linkedin, href: "https://www.linkedin.com/in/dhruvi-patel-bb2b9239a/" },
-                            { Icon: Twitter, href: "https://twitter.com/patel_dhru76113" },
-                            { Icon: Youtube, href: "https://www.youtube.com/@Dhruvi_Patel_6" },
-                            { Icon: Code, href: "https://leetcode.com/u/TR0kHGhQN9/" }
-                        ].map(({ Icon, href }, index) => (
+                            { Icon: Github, href: "https://github.com/DHRUVI5674", label: "GitHub Profile" },
+                            { Icon: Linkedin, href: "https://www.linkedin.com/in/dhruvi-patel-bb2b9239a/", label: "LinkedIn Profile" },
+                            { Icon: Twitter, href: "https://twitter.com/patel_dhru76113", label: "Twitter Profile" },
+                            { Icon: Youtube, href: "https://www.youtube.com/@Dhruvi_Patel_6", label: "YouTube Channel" },
+                            { Icon: Code, href: "https://leetcode.com/u/TR0kHGhQN9/", label: "LeetCode Profile" }
+                        ].map(({ Icon, href, label }, index) => (
                             <motion.a
                                 key={index}
                                 href={href}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                aria-label={label}
                                 whileHover={{ scale: 1.2, color: '#60a5fa' }}
                                 className="text-gray-400 transition-colors"
                             >
-                                <Icon size={30} />
+                                <Icon size={30} aria-hidden="true" className="w-6 h-6 md:w-[30px] md:h-[30px]" />
                             </motion.a>
                         ))}
                     </div>
@@ -128,16 +129,20 @@ const Hero = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="relative flex justify-center order-1 md:order-2 mb-12 md:mb-0"
+                    className="relative flex justify-center order-1 md:order-2 mb-8 md:mb-0"
                 >
-                    <div className="relative w-72 h-72 md:w-[400px] md:h-[400px]">
+                    <div className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-[320px] md:h-[320px] lg:w-[400px] lg:h-[400px]">
                         <div className="absolute inset-0 bg-blue-500 rounded-full blur-[60px] opacity-20 animate-pulse" />
                         <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 via-cyan-400 to-indigo-600 rounded-full p-1.5 shadow-[0_0_50px_rgba(59,130,246,0.4)]">
                             <div className="w-full h-full rounded-full border-4 border-slate-900 overflow-hidden bg-slate-800">
                                 <img
-                                    src="https://res.cloudinary.com/db3htfvvx/image/upload/v1774799881/Screenshot_2026-03-10_082843_wdnbct.png"
-                                    alt="Dhruvi Patel"
+                                    src="https://res.cloudinary.com/db3htfvvx/image/upload/q_auto,f_auto,w_600/v1774799881/Screenshot_2026-03-10_082843_wdnbct.png"
+                                    alt="Dhruvi Patel - Software Engineer and Full-Stack Developer"
+                                    width="400"
+                                    height="400"
                                     className="w-full h-full object-cover"
+                                    loading="eager"
+                                    fetchPriority="high"
                                     onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
                                 />
                                 <div className="hidden w-full h-full bg-slate-800 items-center justify-center text-gray-500 text-6xl">
