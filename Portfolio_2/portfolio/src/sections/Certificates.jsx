@@ -144,12 +144,10 @@ const Certificates = () => {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
                 
-                <div className="hidden">
-                    <SectionTitle
-                        title="Certifications"
-                        subtitle="Validating my expertise through rigorous training and milestones"
-                    />
-                </div>
+                <SectionTitle
+                    title="Certifications"
+                    subtitle="Validating my expertise through rigorous training and milestones"
+                />
 
                 {/* Toggle View */}
                 <div className="flex justify-center mb-10 sm:mb-12">
