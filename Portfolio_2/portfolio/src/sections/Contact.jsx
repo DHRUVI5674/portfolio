@@ -54,7 +54,7 @@ const Contact = () => {
                 setFormData({ name: '', nmae: '', email: '', message: '', time: '' });
                 setIsSending(false);
             }, (error) => {
-                console.error('EmailJS Error Object:', error);
+                console.warn('EmailJS Error Object:', error);
                 const errorDetail = error?.text || JSON.stringify(error) || 'Unknown error';
                 alert(`Error: ${errorDetail}`);
                 setIsSending(false);
@@ -148,8 +148,9 @@ const Contact = () => {
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                                 <div className="space-y-2">
-                                    <label className="text-xs font-semibold text-gray-400 uppercase tracking-widest ml-1">Your Name</label>
+                                    <label htmlFor="name" className="text-xs font-semibold text-gray-400 uppercase tracking-widest ml-1">Your Name</label>
                                     <input
+                                        id="name"
                                         type="text"
                                         name="name"
                                         value={formData.name}
@@ -161,8 +162,9 @@ const Contact = () => {
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-xs font-semibold text-gray-400 uppercase tracking-widest ml-1">Your Email</label>
+                                    <label htmlFor="email" className="text-xs font-semibold text-gray-400 uppercase tracking-widest ml-1">Your Email</label>
                                     <input
+                                        id="email"
                                         type="email"
                                         name="email"
                                         value={formData.email}
@@ -175,8 +177,9 @@ const Contact = () => {
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-xs font-semibold text-gray-400 uppercase tracking-widest ml-1">Message</label>
+                                <label htmlFor="message" className="text-xs font-semibold text-gray-400 uppercase tracking-widest ml-1">Message</label>
                                 <textarea
+                                    id="message"
                                     name="message"
                                     value={formData.message}
                                     onChange={handleChange}
