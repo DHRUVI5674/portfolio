@@ -99,7 +99,7 @@ function App() {
     <>
       {loading && <SplashScreen onComplete={() => setLoading(false)} />}
       
-      <div className={loading ? 'fixed inset-0 opacity-0 pointer-events-none' : 'opacity-100 transition-opacity duration-1000'}>
+      <div className="opacity-100 transition-opacity duration-1000">
         <Router>
       <Background />
       <div className="relative z-10 font-sans text-gray-200 selection:bg-neon-cyan selection:text-black overflow-x-hidden">

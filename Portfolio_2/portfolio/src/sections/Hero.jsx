@@ -38,7 +38,7 @@ const Hero = () => {
 
                 {/* Left Content */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 1, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                     className="order-2 md:order-1"
@@ -57,7 +57,7 @@ const Hero = () => {
                                 Hello, I'm
                             </motion.span>
                             <motion.span
-                                initial={{ opacity: 0, scale: 0.95 }}
+                                initial={{ opacity: 1, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ type: "spring", bounce: 0.4, delay: 0.2 }}
                                 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-normal leading-none bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-500 drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]"
@@ -112,7 +112,7 @@ const Hero = () => {
 
                 {/* Right Content - Glowing Profile */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 1, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="relative flex justify-center order-1 md:order-2 mb-8 md:mb-0"
