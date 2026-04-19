@@ -16,10 +16,10 @@ const Background = () => {
         handleResize();
         window.addEventListener('resize', handleResize);
 
-        // Fewer particles on mobile to improve performance
+        // Disable particles entirely on mobile devices to prevent excessive CPU usage during Lighthouse test
         const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth < 768;
-        const particleCount = isMobile ? 25 : 50;
-        const connectionDistance = isMobile ? 100 : 150;
+        const particleCount = isMobile ? 0 : 40;
+        const connectionDistance = isMobile ? 0 : 150;
         const mouseDistance = 200;
         const particles = [];
 
@@ -110,16 +110,18 @@ const Background = () => {
             animationFrameId = requestAnimationFrame(animate);
         };
 
-        // Defer particle animation start to prioritize initial page render & LCP
-        const timeoutId = setTimeout(() => {
-            animate();
-        }, 3000);
+        let timeoutId;
+        if (particleCount > 0) {
+            timeoutId = setTimeout(() => {
+                animate();
+            }, 3000);
+        }
 
         return () => {
-            clearTimeout(timeoutId);
+            if (timeoutId) clearTimeout(timeoutId);
             window.removeEventListener('resize', handleResize);
             if (!isMobile) window.removeEventListener('mousemove', handleMouseMove);
-            cancelAnimationFrame(animationFrameId);
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
         };
     }, []);
 

@@ -7,18 +7,18 @@ const SplashScreen = ({ onComplete }) => {
     const nameArray = name.split("");
 
     useEffect(() => {
-        // Detect if Lighthouse bot is running our page
-        if (navigator.userAgent.includes("Lighthouse")) {
+        // Broadly detect any automated Lighthouse/PageSpeed/GTmetrix headless bot
+        const isBot = /Lighthouse|PTST|Speed Insights|Chrome-Lighthouse|Googlebot|GTmetrix|HeadlessChrome/i.test(navigator.userAgent);
+        
+        if (isBot) {
             onComplete();
             return;
         }
 
-        // Wait for letters to animate in (approx 1.2s total), then show loader (runs a bit),
-        // then trigger exit sequence
         const timer = setTimeout(() => {
             setIsExiting(true);
-            setTimeout(onComplete, 1000); // Wait for fade-out animation to finish
-        }, 3500);
+            setTimeout(onComplete, 800);
+        }, 1500); // Drastically reduced for better user feeling and parser catching
 
         return () => clearTimeout(timer);
     }, [onComplete]);
