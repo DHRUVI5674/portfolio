@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../components/Button';
 import { Github, Linkedin, Twitter, Youtube, Code } from 'lucide-react';
-import profileImg from '../assets/downloader.png';
+import profileImg from '../assets/downloader.jpg';
 
 const Hero = () => {
     const roles = ["Full Stack Developer", "UI/UX Designer", "Backend Developer", "Frontend Developer", "Web Architect"];
@@ -121,16 +121,15 @@ const Hero = () => {
                         <div className="absolute inset-0 bg-blue-500 rounded-full blur-[60px] opacity-20 animate-pulse" />
                         <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 via-cyan-400 to-indigo-600 rounded-full p-1.5 shadow-[0_0_50px_rgba(59,130,246,0.4)]">
                             <div className="w-full h-full rounded-full border-4 border-slate-900 overflow-hidden bg-slate-800">
-                                <img
-                                    src="https://res.cloudinary.com/db3htfvvx/image/upload/q_auto,f_auto,w_600/v1774799881/Screenshot_2026-03-10_082843_wdnbct.png"
-                                    alt="Dhruvi Patel - Software Engineer and Full-Stack Developer"
-                                    width="400"
-                                    height="400"
-                                    className="w-full h-full object-cover"
-                                    loading="eager"
-                                    fetchPriority="high"
-                                    onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
-                                />
+                             <img
+    src={profileImg}
+    alt="Dhruvi Patel - Software Engineer and Full-Stack Developer"
+    width="400"
+    height="900"
+    className="w-full h-full object-cover object-top"
+    loading="eager"
+    fetchPriority="high"
+/>
                                 <div className="hidden w-full h-full bg-slate-800 items-center justify-center text-gray-500 text-6xl">
                                     DP
                                 </div>

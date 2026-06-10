@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiDownload, FiMail } from 'react-icons/fi';
-import Photo from '../assets/downloader.png'
+import Photo from '../assets/downloader.jpg'
 
 function Hero() {
   // Function to handle resume download
