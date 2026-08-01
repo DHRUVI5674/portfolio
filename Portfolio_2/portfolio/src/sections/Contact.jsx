@@ -86,7 +86,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <p className="text-sm text-gray-500">Email</p>
-                                    <p className="font-medium">dhruvipatel@gmail.com</p>
+                                    <p className="font-medium">dhruvipatel5674@gmail.com</p>
                                 </div>
                             </div>
 
@@ -96,7 +96,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <p className="text-sm text-gray-500">Phone</p>
-                                    <p className="font-medium">+91 9582384990</p>
+                                    <p className="font-medium">+91 9426408104</p>
                                 </div>
                             </div>
 
