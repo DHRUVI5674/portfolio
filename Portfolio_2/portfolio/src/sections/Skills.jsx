@@ -4,10 +4,11 @@ import { motion } from 'framer-motion';
 import { Code, Server, Wrench } from 'lucide-react';
 import {
     SiHtml5, SiCss3, SiJavascript, SiReact, SiNextdotjs, SiTailwindcss,
-    SiNodedotjs, SiExpress, SiMongodb, SiMysql,
-    SiGit, SiDocker, SiVercel
+    SiNodedotjs, SiExpress, SiMongodb,
+    SiGit, SiDocker, SiVercel, SiPostman
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
+import { TbSql } from 'react-icons/tb';
 
 const Skills = () => {
     return (
@@ -91,7 +92,7 @@ const Skills = () => {
                                         <LeafNode icon={<SiNodedotjs size={32} />} text="Node.js" color="text-green-500" index={0} />
                                         <LeafNode icon={<SiExpress size={32} />} text="Express" color="text-gray-400" index={1} />
                                         <LeafNode icon={<SiMongodb size={32} />} text="MongoDB" color="text-green-400" index={2} />
-                                        <LeafNode icon={<SiMysql size={32} />} text="MySQL" color="text-blue-400" index={3} />
+                                        <LeafNode icon={<TbSql size={32} />} text="SQL" color="text-blue-400" index={3} />
                                     </div>
                                 </div>
                             </div>
@@ -114,6 +115,9 @@ const Skills = () => {
                                         <LeafNode icon={<SiDocker size={32} />} text="Docker" color="text-blue-500" index={1} />
                                         <LeafNode icon={<VscVscode size={32} />} text="VS Code" color="text-blue-400" index={2} />
                                         <LeafNode icon={<SiVercel size={32} />} text="Vercel" color="text-white" index={3} />
+                                        <div className="col-span-2 flex justify-center">
+                                            <LeafNode icon={<SiPostman size={32} />} text="Postman" color="text-orange-500" index={4} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>

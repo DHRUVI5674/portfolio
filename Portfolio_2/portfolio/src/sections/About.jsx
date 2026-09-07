@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
     const highlights = [
-        { label: "LeetCode Solved", value: "150+", color: "text-blue-400" },
+        { label: "LeetCode Solved", value: "360+", color: "text-blue-400" },
         { label: "Projects Built", value: "10+", color: "text-cyan-400" },
         { label: "Sem 1 SCPA", value: "10/10", color: "text-indigo-400" },
         { label: "Tech Stack", value: "10+", color: "text-blue-500" },
@@ -36,7 +36,7 @@ const About = () => {
                             I'm a first-year <span className="text-white font-semibold underline decoration-blue-500/30">Computer Science Engineering student</span> at Swaminarayan University (Semester 1 SCPA: 10/10), specializing in the <span className="text-white font-semibold">MERN Stack</span>. Experienced in building production-grade systems including a full-stack healthcare platform and real-time communication tools.
                         </p>
                         <p className="text-gray-400 text-lg leading-relaxed mb-10">
-                            Strong focus on <span className="text-white font-semibold">clean code, scalable architecture, and intuitive UI/UX</span>. I've solved 150+ problems on LeetCode with a strong grasp of arrays, strings, recursion, and dynamic programming.
+                            Strong focus on <span className="text-white font-semibold">clean code, scalable architecture, and intuitive UI/UX</span>. I've solved 360+ problems on LeetCode with a strong grasp of arrays, strings, recursion, and dynamic programming.
                         </p>
                         
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-6 mt-8">

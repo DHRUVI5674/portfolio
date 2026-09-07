@@ -3,39 +3,98 @@ import { motion } from 'framer-motion';
 import SectionTitle from '../components/SectionTitle';
 import { Trophy, Activity, ExternalLink, RefreshCw, ChevronRight } from 'lucide-react';
 
+const DEFAULT_STATS = {
+    totalSolved: 361,
+    easySolved: 283,
+    mediumSolved: 78,
+    hardSolved: 0,
+    totalQuestions: 3762,
+    totalEasy: 904,
+    totalMedium: 1941,
+    totalHard: 917,
+    ranking: 376618,
+    acceptanceRate: 74.6
+};
+
 const LeetCode = () => {
-    const [stats, setStats] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [handle] = useState('TR0kHGhQN9');
+    const [stats, setStats] = useState(() => {
+        try {
+            const cached = localStorage.getItem(`leetcode_stats_TR0kHGhQN9`);
+            if (cached) return JSON.parse(cached);
+        } catch {}
+        return null;
+    });
+    const [loading, setLoading] = useState(false);
 
     const fetchLeetData = useCallback(async () => {
         setLoading(true);
         try {
-            const [profileRes, solvedRes] = await Promise.all([
-                fetch(`https://alfa-leetcode-api.onrender.com/${handle}`),
-                fetch(`https://alfa-leetcode-api.onrender.com/${handle}/solved`)
-            ]);
-            
-            const profileData = await profileRes.json();
-            const solvedData = await solvedRes.json();
-            
-            if (profileData && solvedData && solvedData.totalSubmissionNum) {
-                const totalSubmissions = solvedData.totalSubmissionNum[0]?.submissions || 1;
-                const acSubmissions = solvedData.acSubmissionNum[0]?.submissions || 0;
-                const acceptanceRate = ((acSubmissions / totalSubmissions) * 100).toFixed(1);
+            let newStats = null;
 
-                setStats({
-                    totalSolved: solvedData.solvedProblem || 0,
-                    easySolved: solvedData.easySolved || 0,
-                    mediumSolved: solvedData.mediumSolved || 0,
-                    hardSolved: solvedData.hardSolved || 0,
-                    totalQuestions: 3317,
-                    totalEasy: 832,
-                    totalMedium: 1748,
-                    totalHard: 737,
-                    ranking: profileData.ranking || 0,
-                    acceptanceRate: parseFloat(acceptanceRate) || 0
-                });
+            // 1. Try unified profile endpoint
+            try {
+                const profileRes = await fetch(`https://alfa-leetcode-api.onrender.com/${handle}/profile`);
+                if (profileRes.ok) {
+                    const data = await profileRes.json();
+                    if (data && typeof data.totalSolved === 'number') {
+                        const totalSub = data.matchedUserStats?.totalSubmissionNum?.[0]?.submissions || 1;
+                        const acSub = data.matchedUserStats?.acSubmissionNum?.[0]?.submissions || 0;
+                        const accRate = totalSub > 0 ? ((acSub / totalSub) * 100).toFixed(1) : 74.6;
+
+                        newStats = {
+                            totalSolved: data.totalSolved,
+                            easySolved: data.easySolved ?? 0,
+                            mediumSolved: data.mediumSolved ?? 0,
+                            hardSolved: data.hardSolved ?? 0,
+                            totalQuestions: data.totalQuestions || 3762,
+                            totalEasy: data.totalEasy || 904,
+                            totalMedium: data.totalMedium || 1941,
+                            totalHard: data.totalHard || 917,
+                            ranking: data.ranking || 376618,
+                            acceptanceRate: parseFloat(accRate) || 74.6
+                        };
+                    }
+                }
+            } catch (e) {
+                console.warn("Primary LeetCode profile fetch failed, trying solved fallback:", e);
+            }
+
+            // 2. Fallback to /solved endpoint if /profile failed or rate-limited
+            if (!newStats) {
+                try {
+                    const solvedRes = await fetch(`https://alfa-leetcode-api.onrender.com/${handle}/solved`);
+                    if (solvedRes.ok) {
+                        const data = await solvedRes.json();
+                        if (data && typeof data.solvedProblem === 'number') {
+                            const totalSub = data.totalSubmissionNum?.[0]?.submissions || 1;
+                            const acSub = data.acSubmissionNum?.[0]?.submissions || 0;
+                            const accRate = totalSub > 0 ? ((acSub / totalSub) * 100).toFixed(1) : 74.6;
+
+                            newStats = {
+                                totalSolved: data.solvedProblem,
+                                easySolved: data.easySolved ?? 0,
+                                mediumSolved: data.mediumSolved ?? 0,
+                                hardSolved: data.hardSolved ?? 0,
+                                totalQuestions: 3762,
+                                totalEasy: 904,
+                                totalMedium: 1941,
+                                totalHard: 917,
+                                ranking: 376618,
+                                acceptanceRate: parseFloat(accRate) || 74.6
+                            };
+                        }
+                    }
+                } catch (e) {
+                    console.warn("Fallback LeetCode solved fetch failed:", e);
+                }
+            }
+
+            if (newStats) {
+                setStats(newStats);
+                try {
+                    localStorage.setItem(`leetcode_stats_${handle}`, JSON.stringify(newStats));
+                } catch {}
             }
         } catch (err) {
             console.error("Error fetching LeetCode data:", err);
@@ -48,18 +107,7 @@ const LeetCode = () => {
         fetchLeetData();
     }, [fetchLeetData]);
 
-    const displayStats = stats || {
-        totalSolved: 122,
-        easySolved: 112,
-        mediumSolved: 10,
-        hardSolved: 0,
-        totalQuestions: 3317,
-        totalEasy: 829,
-        totalMedium: 1746,
-        totalHard: 742,
-        ranking: 1262465,
-        acceptanceRate: 65.4
-    };
+    const displayStats = stats || DEFAULT_STATS;
 
     return (
         <section id="leetcode" className="py-24 relative overflow-hidden bg-[#050505]">

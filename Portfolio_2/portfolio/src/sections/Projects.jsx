@@ -61,12 +61,21 @@ const projects = [
     },
     {
         title: "Sanjeevani",
-        description: "QR-based emergency health record system for rapid patient data access.",
+        description: "Emergency healthcare response platform providing instant first-responder access to critical patient medical data via QR code scanning.",
         tech: ["React", "Node.js", "Supabase"],
         category: "Full Stack",
         imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
         demoUrl: "https://sanjeevani-ochre.vercel.app/",
         projectUrl: "https://github.com/DHRUVI5674/sanjeevani"
+    },
+    {
+        title: "EstateIntel",
+        description: "AI-powered real estate analytics platform offering personalized property investment reports, neighborhood insights, and inspection requests with secure JWT authentication.",
+        tech: ["React", "Node.js", "JWT", "Render"],
+        category: "Full Stack",
+        imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
+        demoUrl: "https://estateintel-data-6cfs.onrender.com/",
+        projectUrl: "https://github.com/DHRUVI5674/estateIntel"
     },
     {
         title: "Pincode Analyzer",
